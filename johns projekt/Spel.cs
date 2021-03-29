@@ -8,6 +8,8 @@ namespace johns_projekt
 {
     class Spel : IComparable<Spel>
     {
+        string nyRad = Environment.NewLine;
+
         string titel;
         string genre;
         int aldersgrans;
@@ -32,6 +34,16 @@ namespace johns_projekt
         public override string ToString()
         {
             return $"{Titel} ({Genre})";
+        }
+
+        public string GetShortInfo()
+        {
+            string nedladdning = "Nedladdningsbart";
+            if (!Nedladd) nedladdning = "Ej nedladdningsbart";
+            int pris = 0;
+            if (Pris > 0) pris = Pris;
+
+            return $"{Titel}{nyRad}{Genre}{nyRad}{Aldersgrans}+{nyRad}{Plattform}{nyRad}{nedladdning}{nyRad}{Pris} kr{nyRad}{Utgivning}";
         }
 
         public int CompareTo(Spel other)

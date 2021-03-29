@@ -17,6 +17,8 @@ namespace johns_projekt
             Aktiva = aktiva;
         }
 
+
+
         public int Aktiva { get => aktiva; set => aktiva = value; }
     }
 }

@@ -52,6 +52,18 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_bestall.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_bestall.Designer.cs">
+      <DependentUpon>frm_bestall.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_laddaNer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_laddaNer.Designer.cs">
+      <DependentUpon>frm_laddaNer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Onlinespel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -59,6 +71,12 @@
     <Compile Include="Spel.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_bestall.resx">
+      <DependentUpon>frm_bestall.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_laddaNer.resx">
+      <DependentUpon>frm_laddaNer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

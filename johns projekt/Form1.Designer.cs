@@ -29,33 +29,45 @@ namespace johns_projekt
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.tbx_spel = new System.Windows.Forms.TextBox();
+            this.lbx_spel = new System.Windows.Forms.ListBox();
+            this.btn_hamtaSpel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox1
+            // tbx_spel
             // 
-            this.textBox1.Location = new System.Drawing.Point(193, 12);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(166, 136);
-            this.textBox1.TabIndex = 0;
+            this.tbx_spel.Location = new System.Drawing.Point(183, 72);
+            this.tbx_spel.Multiline = true;
+            this.tbx_spel.Name = "tbx_spel";
+            this.tbx_spel.Size = new System.Drawing.Size(166, 109);
+            this.tbx_spel.TabIndex = 0;
             // 
-            // listBox1
+            // lbx_spel
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(365, 12);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 225);
-            this.listBox1.TabIndex = 1;
+            this.lbx_spel.FormattingEnabled = true;
+            this.lbx_spel.Location = new System.Drawing.Point(355, 72);
+            this.lbx_spel.Name = "lbx_spel";
+            this.lbx_spel.Size = new System.Drawing.Size(214, 225);
+            this.lbx_spel.TabIndex = 1;
+            this.lbx_spel.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            // 
+            // btn_hamtaSpel
+            // 
+            this.btn_hamtaSpel.Location = new System.Drawing.Point(183, 188);
+            this.btn_hamtaSpel.Name = "btn_hamtaSpel";
+            this.btn_hamtaSpel.Size = new System.Drawing.Size(166, 23);
+            this.btn_hamtaSpel.TabIndex = 2;
+            this.btn_hamtaSpel.Text = "Beställ";
+            this.btn_hamtaSpel.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(506, 253);
-            this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(591, 323);
+            this.Controls.Add(this.btn_hamtaSpel);
+            this.Controls.Add(this.lbx_spel);
+            this.Controls.Add(this.tbx_spel);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -65,8 +77,9 @@ namespace johns_projekt
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.TextBox tbx_spel;
+        private System.Windows.Forms.ListBox lbx_spel;
+        private System.Windows.Forms.Button btn_hamtaSpel;
     }
 }
 

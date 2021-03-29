@@ -9,10 +9,10 @@ namespace johns_projekt
     class Offlinespel : Spel
     {
         int spelare;
-        int langd;
+        double langd;
 
         public Offlinespel(string titel, string genre, int aldersgrans, string plattform,
-    bool nedladd, int pris, int utgivning, int spelare, int langd)
+    bool nedladd, int pris, int utgivning, int spelare, double langd)
     : base(titel, genre, aldersgrans, plattform, nedladd, pris, utgivning)
         {
             Spelare = spelare;
@@ -20,6 +20,6 @@ namespace johns_projekt
         }
 
         public int Spelare { get => spelare; set => spelare = value; }
-        public int Langd { get => langd; set => langd = value; }
+        public double Langd { get => langd; set => langd = value; }
     }
 }
