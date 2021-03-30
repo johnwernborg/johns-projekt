@@ -10,6 +10,7 @@ namespace johns_projekt
     {
         string nyRad = Environment.NewLine;
 
+        int id;
         string titel;
         string genre;
         int aldersgrans;
@@ -18,9 +19,10 @@ namespace johns_projekt
         int pris;
         int utgivning;
 
-        public Spel(string titel, string genre, int aldersgrans, string plattform, 
+        public Spel(int id, string titel, string genre, int aldersgrans, string plattform, 
             bool nedladd, int pris, int utgivning)
         {
+            Id = id;
             Titel = titel;
             Genre = genre;
             Aldersgrans = aldersgrans;
@@ -48,8 +50,27 @@ namespace johns_projekt
 
         public int CompareTo(Spel other)
         {
+            return string.Compare(this.titel, other.titel);
+        }
+
+        public int PriceUpCompareTo(Spel other)
+        {
             return this.pris - other.pris;
         }
+
+        //public int PriceDownCompareTo(Spel other)
+        //{
+        //    return other.pris - this.pris;
+        //}
+
+        //public int TitleAZCompareTo(Spel other)
+        //{
+        //    return string.Compare(this.titel, other.titel);
+        //}
+        //public int TitleZACompareTo(Spel other)
+        //{
+        //    return string.Compare(other.titel, this.titel);
+        //}
 
         public string Genre { get => genre; set => genre = value; }
         public int Aldersgrans { get => aldersgrans; set => aldersgrans = value; }
@@ -59,5 +80,6 @@ namespace johns_projekt
 
         public string Titel { get => titel; set => titel = value; }
         public int Utgivning { get => utgivning; set => utgivning = value; }
+        public int Id { get => id; set => id = value; }
     }
 }
