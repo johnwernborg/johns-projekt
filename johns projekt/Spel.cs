@@ -38,7 +38,7 @@ namespace johns_projekt
             return $"{Titel} ({Genre})";
         }
 
-        public string GetShortInfo()
+        public virtual string GetShortInfo()
         {
             string nedladdning = "Nedladdningsbart";
             if (!Nedladd) nedladdning = "Ej nedladdningsbart";

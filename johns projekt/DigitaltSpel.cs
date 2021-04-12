@@ -8,6 +8,8 @@ namespace johns_projekt
 {
     class DigitaltSpel : Spel
     {
+        string nyRad = Environment.NewLine;
+
         int nedladdningar;
 
         public DigitaltSpel(int id, string titel, string genre, int aldersgrans, string plattform,
@@ -15,6 +17,16 @@ namespace johns_projekt
     : base(id, titel, genre, aldersgrans, plattform, nedladd, pris, utgivning)
         {
             Nedladdningar = nedladdningar;
+        }
+
+        public override string GetShortInfo()
+        {
+            string nedladdning = "Nedladdningsbart";
+            if (!Nedladd) nedladdning = "Ej nedladdningsbart";
+            int pris = 0;
+            if (Pris > 0) pris = Pris;
+
+            return $"{Titel}{nyRad}{Genre}{nyRad}{Aldersgrans}+{nyRad}{Plattform}{nyRad}{nedladdning}{nyRad}{Pris} kr{nyRad}{Utgivning}{nyRad}{Utgivning}{nyRad}{Nedladdningar}";
         }
 
         public int Nedladdningar { get => nedladdningar; set => nedladdningar = value; }

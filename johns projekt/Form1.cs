@@ -20,34 +20,51 @@ namespace johns_projekt
         {
             InitializeComponent();
 
-//            string connectionString =
-//"SERVER=localhost;DATABASE=spelbutik;UID=lennart;PASSWORD=abcdef";
-//            MySqlConnection conn = new MySqlConnection(connectionString);
-//            conn.Open();
+            //Hämtar koppling till databasen
+            string connectionString =
+"SERVER=localhost;DATABASE=spelbutik;UID=lennart;PASSWORD=abcdef";
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            conn.Open();
 
-//            string sqlsats = "Select * from spel";
-//            MySqlCommand cmd = new MySqlCommand(sqlsats, conn);
-//            MySqlDataReader dataReader = cmd.ExecuteReader();
+            //Söker efter alla spel
+            string sqlsats = "Select * from spel";
+            MySqlCommand cmd = new MySqlCommand(sqlsats, conn);
+            MySqlDataReader dataReader = cmd.ExecuteReader();
 
-//            while (dataReader.Read())
-//            {
-//                List<string> kolumner = new List<string>();
+            //Läser in alla spel
+            while (dataReader.Read())
+            {
+                List<string> kolumner = new List<string>();
 
-//                for (int i = 0; i < dataReader.FieldCount; i++)
-//                {
-//                    if (!dataReader.IsDBNull(i))
-//                    {
-//                        kolumner.Add(dataReader.GetString(i));
-//                    }
-//                    else
-//                    {
-//                        kolumner.Add("NULL");
-//                    }
-//                }
-//                Spel sp = new Spel(int.Parse(kolumner[0]), kolumner[1], kolumner[2], int.Parse(kolumner[3]), 
-//                    kolumner[4], bool.Parse(kolumner[5]), int.Parse(kolumner[6]), int.Parse(kolumner[7]));
-//                MinaSpel.Add(sp);
-//            }
+                //Samlar alla kolumner i en lista
+                for (int i = 0; i < dataReader.FieldCount; i++)
+                {
+                    //Om en kolumn är NULL får den en string "NULL" för att undvika felmeddelande
+                    if (!dataReader.IsDBNull(i))
+                    {
+                        kolumner.Add(dataReader.GetString(i));
+                    }
+                    else
+                    {
+                        kolumner.Add("NULL");
+                    }
+                }
+                //Kollar ifall det är fysiskt eller digitalt, fysiskt har en kolumn med bool
+                if (kolumner.Contains("false"))
+                {
+                    FysisktSpel sp = new FysisktSpel(int.Parse(kolumner[0]), kolumner[1], kolumner[2], int.Parse(kolumner[3]),
+                             kolumner[4], bool.Parse(kolumner[5]), int.Parse(kolumner[6]), int.Parse(kolumner[7]), int.Parse(kolumner[8]));
+                    MinaSpel.Add(sp);
+                }
+                else
+                {
+                    DigitaltSpel sp = new DigitaltSpel(int.Parse(kolumner[0]), kolumner[1], kolumner[2], int.Parse(kolumner[3]),
+                                kolumner[4], bool.Parse(kolumner[5]), int.Parse(kolumner[6]), int.Parse(kolumner[7]), int.Parse(kolumner[9]));
+                    MinaSpel.Add(sp);
+                }
+
+
+            }
 
             //MinaSpel.Add(new DigitaltSpel("The Last Crusade Action Game", "Äventyr", 7, "PC", true, 99, 1989, 1, 0.25));
             //MinaSpel.Add(new DigitaltSpel("Super Mario 64", "Plattform", 3, "Nintendo 64", false, 399, 1996, 1, 5));
@@ -60,9 +77,11 @@ namespace johns_projekt
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //Textboxen är lite otydlig. Kanske visa genom en datagridview istället?
+
+            //Rensar textboxen så att ny text kan skrivas
             tbx_spel.Clear();
-            if (lbx_spel.Items.Contains(MinaSpel))
-            {
+
                 aktuellIndex = lbx_spel.SelectedIndex;
                 Spel aktuelltSpel = (Spel)lbx_spel.SelectedValue;
 
@@ -80,16 +99,36 @@ namespace johns_projekt
                 {
 
                 }
-            }
         }
 
         private void btn_sort_Click(object sender, EventArgs e)
         {
+            //Gör en if-sats som kollar vilka radiobuttons som är itryckta
+            //och skicka sedan en sql-sats till databasen för att få tillbaka rätt sorterat
+
+            //Sortera utefter vad användaren har valt
             MinaSpel.Sort();
             lbx_spel.DataSource = null;
             lbx_spel.Items.Clear();
             lbx_spel.DataSource = MinaSpel;
             
+        }
+
+        private void btn_hamtaSpel_Click(object sender, EventArgs e)
+        {
+            //Om man ska beställa hem spelet öppnas beställ-fönstret,
+            //annars öppnas laddaner-fönstret
+            if(btn_hamtaSpel.Text == "Beställ")
+            {
+                var newForm = new frm_bestall();
+                newForm.Show();
+
+            }
+            else
+            {
+                var newForm = new frm_laddaNer();
+                newForm.Show();
+            }
         }
     }
 }
