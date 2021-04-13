@@ -13,6 +13,10 @@ namespace johns_projekt
 {
     public partial class frm_bestall : Form
     {
+        //Hämtas från första fönstret
+        string produktId;
+        int produktPris;
+
         public frm_bestall()
         {
             InitializeComponent();
@@ -38,6 +42,9 @@ namespace johns_projekt
             string address = tbx_address.Text;
             string kontaktnamn = tbx_kontaktnamn.Text;
             string telefon = tbx_telenum.Text;
+            string datumText = monthCalendar1.SelectionRange.Start.ToShortDateString();
+
+
 
 
             //Hämtar koppling till databasen
@@ -47,11 +54,11 @@ namespace johns_projekt
             conn.Open();
 
             //Skickar kundinfo till kunder
-            string sqlsats = $"Insert Into kunder(KundID, KontaktNamn, Telefon, Address) Values (1, {kontaktnamn}, {address}, {telefon})";
+            string sqlsats = $"Insert Into kunder(KundID, KontaktNamn, Address, Telefon) Values (1, {kontaktnamn}, {address}, {telefon})";
             MySqlCommand cmd = new MySqlCommand(sqlsats, conn);
             MySqlDataReader dataReader = cmd.ExecuteReader();
             //Skickar orderinfo till orders
-            sqlsats = $"Insert Into orders(ProduktID, KundID, OrderPris, Frakt, Datum) Values (1, 1, {antal} * 100, 20, {telefon})";
+            sqlsats = $"Insert Into orders(ProduktID, KundID, OrderPris, Frakt, Datum) Values ({produktId}, 1, {antal} * {produktPris}, 20, {telefon})";
             cmd = new MySqlCommand(sqlsats, conn);
             dataReader = cmd.ExecuteReader();
             lbl_bestallSkickad.Visible = true;
@@ -61,6 +68,17 @@ namespace johns_projekt
         {
             //Går tillbaka till grundfönstret
             //Rensa textboxer eller inte???
+        }
+
+        public void hamtaProduktInfo(string id, int pris)
+        {
+            produktId = id.ToString();
+            produktPris = pris;
+        }
+
+        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            lbl_datum.Text = monthCalendar1.SelectionRange.Start.ToShortDateString();
         }
     }
 }

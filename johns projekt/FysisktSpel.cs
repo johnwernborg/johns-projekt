@@ -26,7 +26,7 @@ namespace johns_projekt
             int pris = 0;
             if (Pris > 0) pris = Pris;
 
-            return $"{Titel}{nyRad}{Genre}{nyRad}{Aldersgrans}+{nyRad}{Plattform}{nyRad}{nedladdning}{nyRad}{Pris} kr{nyRad}{Utgivning}{nyRad}{Utgivning}";
+            return $"{Titel}{nyRad}{Genre}{nyRad}{Aldersgrans}+{nyRad}{Plattform}{nyRad}{nedladdning}{nyRad}{Pris} kr{nyRad}{Utgivning}{nyRad}{Enheter} st";
         }
 
         public int Enheter { get => enheter; set => enheter = value; }

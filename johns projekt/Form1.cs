@@ -73,6 +73,7 @@ namespace johns_projekt
 
 
             lbx_spel.DataSource = MinaSpel;
+            dataGridView1.DataSource = MinaSpel;
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -105,6 +106,14 @@ namespace johns_projekt
         {
             //Gör en if-sats som kollar vilka radiobuttons som är itryckta
             //och skicka sedan en sql-sats till databasen för att få tillbaka rätt sorterat
+            if (rb_az.Checked)
+            {
+
+            }
+            else if (rb_za.Checked)
+            {
+
+            }
 
             //Sortera utefter vad användaren har valt
             MinaSpel.Sort();
@@ -116,19 +125,34 @@ namespace johns_projekt
 
         private void btn_hamtaSpel_Click(object sender, EventArgs e)
         {
+            //Känner av vilket spel man vill köpa
+            Spel aktuelltSpel = (Spel)lbx_spel.SelectedValue;
             //Om man ska beställa hem spelet öppnas beställ-fönstret,
             //annars öppnas laddaner-fönstret
-            if(btn_hamtaSpel.Text == "Beställ")
+            if (btn_hamtaSpel.Text == "Beställ")
             {
                 var newForm = new frm_bestall();
-                newForm.Show();
+                //För över produktid till beställ-fönstret
+                newForm.hamtaProduktInfo(aktuelltSpel.Id.ToString(), aktuelltSpel.Pris);
 
+                newForm.Show();
             }
             else
             {
                 var newForm = new frm_laddaNer();
                 newForm.Show();
             }
+
+        }
+
+        private void btn_rensa_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void spelBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

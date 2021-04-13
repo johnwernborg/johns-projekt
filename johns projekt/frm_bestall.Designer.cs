@@ -44,14 +44,18 @@ namespace johns_projekt
             this.nud_antal = new System.Windows.Forms.NumericUpDown();
             this.lbl_valtSpel = new System.Windows.Forms.Label();
             this.lbl_antal = new System.Windows.Forms.Label();
+            this.lbl_datum = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nud_antal)).BeginInit();
             this.SuspendLayout();
             // 
             // monthCalendar1
             // 
             this.monthCalendar1.Location = new System.Drawing.Point(18, 63);
+            this.monthCalendar1.MaxSelectionCount = 1;
+            this.monthCalendar1.MinDate = new System.DateTime(2021, 4, 15, 0, 0, 0, 0);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 0;
+            this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
             // 
             // tbx_address
             // 
@@ -176,11 +180,21 @@ namespace johns_projekt
             this.lbl_antal.TabIndex = 15;
             this.lbl_antal.Text = "Antal";
             // 
+            // lbl_datum
+            // 
+            this.lbl_datum.AutoSize = true;
+            this.lbl_datum.Location = new System.Drawing.Point(36, 282);
+            this.lbl_datum.Name = "lbl_datum";
+            this.lbl_datum.Size = new System.Drawing.Size(85, 13);
+            this.lbl_datum.TabIndex = 16;
+            this.lbl_datum.Text = "Här är ditt datum";
+            // 
             // frm_bestall
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(456, 314);
+            this.Controls.Add(this.lbl_datum);
             this.Controls.Add(this.lbl_antal);
             this.Controls.Add(this.lbl_valtSpel);
             this.Controls.Add(this.nud_antal);
@@ -222,5 +236,6 @@ namespace johns_projekt
         private System.Windows.Forms.NumericUpDown nud_antal;
         private System.Windows.Forms.Label lbl_valtSpel;
         private System.Windows.Forms.Label lbl_antal;
+        private System.Windows.Forms.Label lbl_datum;
     }
 }
