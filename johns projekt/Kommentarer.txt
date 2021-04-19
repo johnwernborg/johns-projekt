@@ -1,0 +1,2 @@
+﻿2021-04-19
+Kann du skick med en SQL-dump av din databas?
