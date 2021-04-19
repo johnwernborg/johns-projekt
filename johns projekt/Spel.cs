@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace johns_projekt
 {
-    class Spel : IComparable<Spel>
+    public class Spel : IComparable<Spel>
     {
         string nyRad = Environment.NewLine;
 
@@ -45,7 +45,8 @@ namespace johns_projekt
             int pris = 0;
             if (Pris > 0) pris = Pris;
 
-            return $"{Titel}{nyRad}{Genre}{nyRad}{Aldersgrans}+{nyRad}{Plattform}{nyRad}{nedladdning}{nyRad}{Pris} kr{nyRad}{Utgivning}";
+            return $"{Titel}{nyRad}Genre: {Genre}{nyRad}Aldersgrans: {Aldersgrans}+{nyRad}Plattform: {Plattform}" +
+                $"{nyRad}{nedladdning}{nyRad}Pris: {Pris} kr{nyRad}Utgivningsår: {Utgivning}";
         }
 
         public int CompareTo(Spel other)

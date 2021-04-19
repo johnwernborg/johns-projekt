@@ -98,6 +98,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_adderaUppd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_adderaUppd.Designer.cs">
+      <DependentUpon>frm_adderaUppd.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_bestall.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +123,9 @@
     <Compile Include="Spel.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_adderaUppd.resx">
+      <DependentUpon>frm_adderaUppd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_bestall.resx">
       <DependentUpon>frm_bestall.cs</DependentUpon>

@@ -165,7 +165,7 @@ namespace johns_projekt
             // 
             this.lbl_valtSpel.AutoSize = true;
             this.lbl_valtSpel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_valtSpel.Location = new System.Drawing.Point(284, 19);
+            this.lbl_valtSpel.Location = new System.Drawing.Point(14, 34);
             this.lbl_valtSpel.Name = "lbl_valtSpel";
             this.lbl_valtSpel.Size = new System.Drawing.Size(79, 20);
             this.lbl_valtSpel.TabIndex = 14;

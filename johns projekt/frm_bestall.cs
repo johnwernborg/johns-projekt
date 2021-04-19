@@ -14,8 +14,9 @@ namespace johns_projekt
     public partial class frm_bestall : Form
     {
         //Hämtas från första fönstret
-        string produktId;
-        int produktPris;
+        Spel bestalltSpel = new Spel();
+
+
 
         public frm_bestall()
         {
@@ -38,6 +39,9 @@ namespace johns_projekt
             //Måste hämta ProduktID och Pris från grundfönstret, 
 
             //Läser in all beställningsinfo
+            string produktId = bestalltSpel.Id.ToString();
+            string produktTitel = bestalltSpel.Titel;
+            int produktPris = bestalltSpel.Pris;
             int antal = nud_antal.DecimalPlaces;
             string address = tbx_address.Text;
             string kontaktnamn = tbx_kontaktnamn.Text;
@@ -70,10 +74,10 @@ namespace johns_projekt
             //Rensa textboxer eller inte???
         }
 
-        public void hamtaProduktInfo(string id, int pris)
+        public void hamtaProduktInfo(Spel valtSpel)
         {
-            produktId = id.ToString();
-            produktPris = pris;
+            bestalltSpel = valtSpel;
+            lbl_valtSpel.Text = bestalltSpel.Titel;
         }
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)

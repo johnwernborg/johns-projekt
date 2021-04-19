@@ -49,6 +49,9 @@ namespace johns_projekt
             this.lbl_pris = new System.Windows.Forms.Label();
             this.btn_sok = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btn_radera = new System.Windows.Forms.Button();
+            this.btn_uppdatera = new System.Windows.Forms.Button();
+            this.btn_laggTill = new System.Windows.Forms.Button();
             this.genreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.titelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.prisDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,7 +60,6 @@ namespace johns_projekt
             this.utgivningDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.spelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.fysisktSpelBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.btn_radera = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spelBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fysisktSpelBindingSource)).BeginInit();
@@ -258,6 +260,37 @@ namespace johns_projekt
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(422, 236);
             this.dataGridView1.TabIndex = 20;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // btn_radera
+            // 
+            this.btn_radera.Location = new System.Drawing.Point(439, 186);
+            this.btn_radera.Name = "btn_radera";
+            this.btn_radera.Size = new System.Drawing.Size(171, 23);
+            this.btn_radera.TabIndex = 21;
+            this.btn_radera.Text = "Radera";
+            this.btn_radera.UseVisualStyleBackColor = true;
+            this.btn_radera.Click += new System.EventHandler(this.btn_radera_Click);
+            // 
+            // btn_uppdatera
+            // 
+            this.btn_uppdatera.Location = new System.Drawing.Point(439, 246);
+            this.btn_uppdatera.Name = "btn_uppdatera";
+            this.btn_uppdatera.Size = new System.Drawing.Size(171, 23);
+            this.btn_uppdatera.TabIndex = 22;
+            this.btn_uppdatera.Text = "Uppdatera valt spel";
+            this.btn_uppdatera.UseVisualStyleBackColor = true;
+            this.btn_uppdatera.Click += new System.EventHandler(this.btn_uppdatera_Click);
+            // 
+            // btn_laggTill
+            // 
+            this.btn_laggTill.Location = new System.Drawing.Point(439, 275);
+            this.btn_laggTill.Name = "btn_laggTill";
+            this.btn_laggTill.Size = new System.Drawing.Size(171, 23);
+            this.btn_laggTill.TabIndex = 23;
+            this.btn_laggTill.Text = "Lägg till nytt spel";
+            this.btn_laggTill.UseVisualStyleBackColor = true;
+            this.btn_laggTill.Click += new System.EventHandler(this.btn_laggTill_Click);
             // 
             // genreDataGridViewTextBoxColumn
             // 
@@ -309,20 +342,13 @@ namespace johns_projekt
             // 
             this.fysisktSpelBindingSource.DataSource = typeof(johns_projekt.FysisktSpel);
             // 
-            // btn_radera
-            // 
-            this.btn_radera.Location = new System.Drawing.Point(439, 186);
-            this.btn_radera.Name = "btn_radera";
-            this.btn_radera.Size = new System.Drawing.Size(171, 23);
-            this.btn_radera.TabIndex = 21;
-            this.btn_radera.Text = "Radera";
-            this.btn_radera.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(704, 460);
+            this.ClientSize = new System.Drawing.Size(639, 460);
+            this.Controls.Add(this.btn_laggTill);
+            this.Controls.Add(this.btn_uppdatera);
             this.Controls.Add(this.btn_radera);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btn_sok);
@@ -383,6 +409,8 @@ namespace johns_projekt
         private System.Windows.Forms.DataGridViewTextBoxColumn plattformDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn utgivningDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button btn_radera;
+        private System.Windows.Forms.Button btn_uppdatera;
+        private System.Windows.Forms.Button btn_laggTill;
     }
 }
 

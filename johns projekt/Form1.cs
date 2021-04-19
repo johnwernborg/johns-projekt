@@ -132,8 +132,8 @@ namespace johns_projekt
             if (btn_hamtaSpel.Text == "Beställ")
             {
                 var newForm = new frm_bestall();
-                //För över produktid till beställ-fönstret
-                newForm.hamtaProduktInfo(aktuelltSpel.Id.ToString(), aktuelltSpel.Pris);
+                //För över produktID till beställ-fönstret
+                newForm.hamtaProduktInfo(aktuelltSpel);
 
                 newForm.Show();
             }
@@ -153,6 +153,48 @@ namespace johns_projekt
         private void spelBindingSource_CurrentChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //Funkar bara när man trycker på ett spel, inte när man bläddrar i listan
+            Spel aktuelltSpel = (Spel)dataGridView1.CurrentRow.DataBoundItem;
+            lbl_spel.Text = aktuelltSpel.Titel;
+        }
+
+        private void btn_radera_Click(object sender, EventArgs e)
+        {
+            //Hämtar koppling till databasen
+            string connectionString =
+"SERVER=localhost;DATABASE=spelbutik;UID=lennart;PASSWORD=abcdef";
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            conn.Open();
+
+            Spel aktuelltSpel = (Spel)dataGridView1.CurrentRow.DataBoundItem;
+
+            //Raderar aktuellt spel
+            //Blir felmeddelande med databasen men spelet tas bort?
+            string sqlsats = $"Delete From spel Where ProduktID = {aktuelltSpel.Id}";
+            MySqlCommand cmd = new MySqlCommand(sqlsats, conn);
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+            MinaSpel.Remove(aktuelltSpel);
+            conn.Close();
+        }
+
+        private void btn_laggTill_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_uppdatera_Click(object sender, EventArgs e)
+        {
+            Spel aktuelltSpel = (Spel)lbx_spel.SelectedValue;
+
+            var newForm = new frm_adderaUppd();
+            //För över produktID till beställ-fönstret
+            newForm.hamtaProduktInfo(aktuelltSpel);
+
+            newForm.Show();
         }
     }
 }
