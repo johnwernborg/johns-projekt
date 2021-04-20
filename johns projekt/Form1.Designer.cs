@@ -52,6 +52,7 @@ namespace johns_projekt
             this.btn_radera = new System.Windows.Forms.Button();
             this.btn_uppdatera = new System.Windows.Forms.Button();
             this.btn_laggTill = new System.Windows.Forms.Button();
+            this.btn_laddaNer = new System.Windows.Forms.Button();
             this.genreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.titelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.prisDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -264,17 +265,17 @@ namespace johns_projekt
             // 
             // btn_radera
             // 
-            this.btn_radera.Location = new System.Drawing.Point(439, 186);
+            this.btn_radera.Location = new System.Drawing.Point(439, 237);
             this.btn_radera.Name = "btn_radera";
             this.btn_radera.Size = new System.Drawing.Size(171, 23);
             this.btn_radera.TabIndex = 21;
-            this.btn_radera.Text = "Radera";
+            this.btn_radera.Text = "Radera valt spel";
             this.btn_radera.UseVisualStyleBackColor = true;
             this.btn_radera.Click += new System.EventHandler(this.btn_radera_Click);
             // 
             // btn_uppdatera
             // 
-            this.btn_uppdatera.Location = new System.Drawing.Point(439, 246);
+            this.btn_uppdatera.Location = new System.Drawing.Point(439, 266);
             this.btn_uppdatera.Name = "btn_uppdatera";
             this.btn_uppdatera.Size = new System.Drawing.Size(171, 23);
             this.btn_uppdatera.TabIndex = 22;
@@ -284,13 +285,23 @@ namespace johns_projekt
             // 
             // btn_laggTill
             // 
-            this.btn_laggTill.Location = new System.Drawing.Point(439, 275);
+            this.btn_laggTill.Location = new System.Drawing.Point(439, 295);
             this.btn_laggTill.Name = "btn_laggTill";
             this.btn_laggTill.Size = new System.Drawing.Size(171, 23);
             this.btn_laggTill.TabIndex = 23;
             this.btn_laggTill.Text = "Lägg till nytt spel";
             this.btn_laggTill.UseVisualStyleBackColor = true;
             this.btn_laggTill.Click += new System.EventHandler(this.btn_laggTill_Click);
+            // 
+            // btn_laddaNer
+            // 
+            this.btn_laddaNer.Location = new System.Drawing.Point(439, 186);
+            this.btn_laddaNer.Name = "btn_laddaNer";
+            this.btn_laddaNer.Size = new System.Drawing.Size(171, 23);
+            this.btn_laddaNer.TabIndex = 24;
+            this.btn_laddaNer.Text = "Ladda ner";
+            this.btn_laddaNer.UseVisualStyleBackColor = true;
+            this.btn_laddaNer.Click += new System.EventHandler(this.btn_laddaNer_Click);
             // 
             // genreDataGridViewTextBoxColumn
             // 
@@ -347,6 +358,7 @@ namespace johns_projekt
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(639, 460);
+            this.Controls.Add(this.btn_laddaNer);
             this.Controls.Add(this.btn_laggTill);
             this.Controls.Add(this.btn_uppdatera);
             this.Controls.Add(this.btn_radera);
@@ -411,6 +423,7 @@ namespace johns_projekt
         private System.Windows.Forms.Button btn_radera;
         private System.Windows.Forms.Button btn_uppdatera;
         private System.Windows.Forms.Button btn_laggTill;
+        private System.Windows.Forms.Button btn_laddaNer;
     }
 }
 

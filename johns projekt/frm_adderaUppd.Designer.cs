@@ -46,19 +46,25 @@ namespace johns_projekt
             this.tbx_digFys = new System.Windows.Forms.TextBox();
             this.lbl_nedladd = new System.Windows.Forms.Label();
             this.tbx_jaNej = new System.Windows.Forms.TextBox();
+            this.lbx_spel = new System.Windows.Forms.ListBox();
+            this.btn_adderaUpd = new System.Windows.Forms.Button();
+            this.rb_fysSpel = new System.Windows.Forms.RadioButton();
+            this.rb_digSpel = new System.Windows.Forms.RadioButton();
+            this.btn_ok = new System.Windows.Forms.Button();
+            this.btn_avbryt = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tbx_valtSpel
             // 
-            this.tbx_valtSpel.Location = new System.Drawing.Point(35, 27);
+            this.tbx_valtSpel.Location = new System.Drawing.Point(425, 12);
             this.tbx_valtSpel.Multiline = true;
             this.tbx_valtSpel.Name = "tbx_valtSpel";
-            this.tbx_valtSpel.Size = new System.Drawing.Size(154, 210);
+            this.tbx_valtSpel.Size = new System.Drawing.Size(18, 25);
             this.tbx_valtSpel.TabIndex = 1;
             // 
             // tbx_titel
             // 
-            this.tbx_titel.Location = new System.Drawing.Point(271, 27);
+            this.tbx_titel.Location = new System.Drawing.Point(306, 27);
             this.tbx_titel.Name = "tbx_titel";
             this.tbx_titel.Size = new System.Drawing.Size(100, 20);
             this.tbx_titel.TabIndex = 2;
@@ -66,7 +72,7 @@ namespace johns_projekt
             // lbl_titel
             // 
             this.lbl_titel.AutoSize = true;
-            this.lbl_titel.Location = new System.Drawing.Point(238, 30);
+            this.lbl_titel.Location = new System.Drawing.Point(274, 30);
             this.lbl_titel.Name = "lbl_titel";
             this.lbl_titel.Size = new System.Drawing.Size(27, 13);
             this.lbl_titel.TabIndex = 3;
@@ -75,7 +81,7 @@ namespace johns_projekt
             // lbl_genre
             // 
             this.lbl_genre.AutoSize = true;
-            this.lbl_genre.Location = new System.Drawing.Point(238, 56);
+            this.lbl_genre.Location = new System.Drawing.Point(264, 56);
             this.lbl_genre.Name = "lbl_genre";
             this.lbl_genre.Size = new System.Drawing.Size(36, 13);
             this.lbl_genre.TabIndex = 5;
@@ -83,7 +89,7 @@ namespace johns_projekt
             // 
             // tbx_genre
             // 
-            this.tbx_genre.Location = new System.Drawing.Point(280, 53);
+            this.tbx_genre.Location = new System.Drawing.Point(306, 53);
             this.tbx_genre.Name = "tbx_genre";
             this.tbx_genre.Size = new System.Drawing.Size(100, 20);
             this.tbx_genre.TabIndex = 4;
@@ -91,7 +97,7 @@ namespace johns_projekt
             // lbl_plattform
             // 
             this.lbl_plattform.AutoSize = true;
-            this.lbl_plattform.Location = new System.Drawing.Point(235, 108);
+            this.lbl_plattform.Location = new System.Drawing.Point(253, 108);
             this.lbl_plattform.Name = "lbl_plattform";
             this.lbl_plattform.Size = new System.Drawing.Size(48, 13);
             this.lbl_plattform.TabIndex = 9;
@@ -99,7 +105,7 @@ namespace johns_projekt
             // 
             // tbx_plattform
             // 
-            this.tbx_plattform.Location = new System.Drawing.Point(289, 105);
+            this.tbx_plattform.Location = new System.Drawing.Point(306, 105);
             this.tbx_plattform.Name = "tbx_plattform";
             this.tbx_plattform.Size = new System.Drawing.Size(100, 20);
             this.tbx_plattform.TabIndex = 8;
@@ -107,7 +113,7 @@ namespace johns_projekt
             // lbl_aldersgrans
             // 
             this.lbl_aldersgrans.AutoSize = true;
-            this.lbl_aldersgrans.Location = new System.Drawing.Point(212, 82);
+            this.lbl_aldersgrans.Location = new System.Drawing.Point(238, 82);
             this.lbl_aldersgrans.Name = "lbl_aldersgrans";
             this.lbl_aldersgrans.Size = new System.Drawing.Size(62, 13);
             this.lbl_aldersgrans.TabIndex = 7;
@@ -115,7 +121,7 @@ namespace johns_projekt
             // 
             // tbx_aldersgrans
             // 
-            this.tbx_aldersgrans.Location = new System.Drawing.Point(280, 79);
+            this.tbx_aldersgrans.Location = new System.Drawing.Point(306, 79);
             this.tbx_aldersgrans.Name = "tbx_aldersgrans";
             this.tbx_aldersgrans.Size = new System.Drawing.Size(100, 20);
             this.tbx_aldersgrans.TabIndex = 6;
@@ -123,7 +129,7 @@ namespace johns_projekt
             // lbl_utgivning
             // 
             this.lbl_utgivning.AutoSize = true;
-            this.lbl_utgivning.Location = new System.Drawing.Point(231, 131);
+            this.lbl_utgivning.Location = new System.Drawing.Point(248, 134);
             this.lbl_utgivning.Name = "lbl_utgivning";
             this.lbl_utgivning.Size = new System.Drawing.Size(52, 13);
             this.lbl_utgivning.TabIndex = 11;
@@ -131,7 +137,7 @@ namespace johns_projekt
             // 
             // tbx_utgivning
             // 
-            this.tbx_utgivning.Location = new System.Drawing.Point(289, 131);
+            this.tbx_utgivning.Location = new System.Drawing.Point(306, 131);
             this.tbx_utgivning.Name = "tbx_utgivning";
             this.tbx_utgivning.Size = new System.Drawing.Size(100, 20);
             this.tbx_utgivning.TabIndex = 10;
@@ -139,7 +145,7 @@ namespace johns_projekt
             // lbl_pris
             // 
             this.lbl_pris.AutoSize = true;
-            this.lbl_pris.Location = new System.Drawing.Point(259, 160);
+            this.lbl_pris.Location = new System.Drawing.Point(277, 160);
             this.lbl_pris.Name = "lbl_pris";
             this.lbl_pris.Size = new System.Drawing.Size(24, 13);
             this.lbl_pris.TabIndex = 13;
@@ -147,7 +153,7 @@ namespace johns_projekt
             // 
             // tbx_pris
             // 
-            this.tbx_pris.Location = new System.Drawing.Point(289, 157);
+            this.tbx_pris.Location = new System.Drawing.Point(306, 157);
             this.tbx_pris.Name = "tbx_pris";
             this.tbx_pris.Size = new System.Drawing.Size(100, 20);
             this.tbx_pris.TabIndex = 12;
@@ -155,7 +161,7 @@ namespace johns_projekt
             // lbl_digFys
             // 
             this.lbl_digFys.AutoSize = true;
-            this.lbl_digFys.Location = new System.Drawing.Point(208, 186);
+            this.lbl_digFys.Location = new System.Drawing.Point(226, 212);
             this.lbl_digFys.Name = "lbl_digFys";
             this.lbl_digFys.Size = new System.Drawing.Size(75, 13);
             this.lbl_digFys.TabIndex = 15;
@@ -163,7 +169,7 @@ namespace johns_projekt
             // 
             // tbx_digFys
             // 
-            this.tbx_digFys.Location = new System.Drawing.Point(289, 183);
+            this.tbx_digFys.Location = new System.Drawing.Point(306, 209);
             this.tbx_digFys.Name = "tbx_digFys";
             this.tbx_digFys.Size = new System.Drawing.Size(100, 20);
             this.tbx_digFys.TabIndex = 14;
@@ -171,7 +177,7 @@ namespace johns_projekt
             // lbl_nedladd
             // 
             this.lbl_nedladd.AutoSize = true;
-            this.lbl_nedladd.Location = new System.Drawing.Point(208, 220);
+            this.lbl_nedladd.Location = new System.Drawing.Point(210, 186);
             this.lbl_nedladd.Name = "lbl_nedladd";
             this.lbl_nedladd.Size = new System.Drawing.Size(90, 13);
             this.lbl_nedladd.TabIndex = 17;
@@ -179,16 +185,83 @@ namespace johns_projekt
             // 
             // tbx_jaNej
             // 
-            this.tbx_jaNej.Location = new System.Drawing.Point(304, 217);
+            this.tbx_jaNej.Location = new System.Drawing.Point(306, 183);
             this.tbx_jaNej.Name = "tbx_jaNej";
             this.tbx_jaNej.Size = new System.Drawing.Size(100, 20);
             this.tbx_jaNej.TabIndex = 16;
+            // 
+            // lbx_spel
+            // 
+            this.lbx_spel.FormattingEnabled = true;
+            this.lbx_spel.Location = new System.Drawing.Point(21, 30);
+            this.lbx_spel.Name = "lbx_spel";
+            this.lbx_spel.Size = new System.Drawing.Size(183, 199);
+            this.lbx_spel.TabIndex = 18;
+            // 
+            // btn_adderaUpd
+            // 
+            this.btn_adderaUpd.Location = new System.Drawing.Point(306, 241);
+            this.btn_adderaUpd.Name = "btn_adderaUpd";
+            this.btn_adderaUpd.Size = new System.Drawing.Size(100, 41);
+            this.btn_adderaUpd.TabIndex = 19;
+            this.btn_adderaUpd.Text = "Lägg till nytt spel";
+            this.btn_adderaUpd.UseVisualStyleBackColor = true;
+            this.btn_adderaUpd.Click += new System.EventHandler(this.btn_laggTill_Click);
+            // 
+            // rb_fysSpel
+            // 
+            this.rb_fysSpel.AutoSize = true;
+            this.rb_fysSpel.Location = new System.Drawing.Point(216, 241);
+            this.rb_fysSpel.Name = "rb_fysSpel";
+            this.rb_fysSpel.Size = new System.Drawing.Size(79, 17);
+            this.rb_fysSpel.TabIndex = 20;
+            this.rb_fysSpel.TabStop = true;
+            this.rb_fysSpel.Text = "Fysiskt spel";
+            this.rb_fysSpel.UseVisualStyleBackColor = true;
+            this.rb_fysSpel.CheckedChanged += new System.EventHandler(this.rb_fysSpel_CheckedChanged);
+            // 
+            // rb_digSpel
+            // 
+            this.rb_digSpel.AutoSize = true;
+            this.rb_digSpel.Location = new System.Drawing.Point(216, 265);
+            this.rb_digSpel.Name = "rb_digSpel";
+            this.rb_digSpel.Size = new System.Drawing.Size(79, 17);
+            this.rb_digSpel.TabIndex = 21;
+            this.rb_digSpel.TabStop = true;
+            this.rb_digSpel.Text = "Digitalt spel";
+            this.rb_digSpel.UseVisualStyleBackColor = true;
+            this.rb_digSpel.CheckedChanged += new System.EventHandler(this.rb_digSpel_CheckedChanged);
+            // 
+            // btn_ok
+            // 
+            this.btn_ok.Location = new System.Drawing.Point(21, 265);
+            this.btn_ok.Name = "btn_ok";
+            this.btn_ok.Size = new System.Drawing.Size(59, 33);
+            this.btn_ok.TabIndex = 22;
+            this.btn_ok.Text = "OK";
+            this.btn_ok.UseVisualStyleBackColor = true;
+            this.btn_ok.Click += new System.EventHandler(this.btn_ok_Click);
+            // 
+            // btn_avbryt
+            // 
+            this.btn_avbryt.Location = new System.Drawing.Point(86, 265);
+            this.btn_avbryt.Name = "btn_avbryt";
+            this.btn_avbryt.Size = new System.Drawing.Size(59, 33);
+            this.btn_avbryt.TabIndex = 23;
+            this.btn_avbryt.Text = "Avbryt";
+            this.btn_avbryt.UseVisualStyleBackColor = true;
             // 
             // frm_adderaUppd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(587, 322);
+            this.ClientSize = new System.Drawing.Size(455, 310);
+            this.Controls.Add(this.btn_avbryt);
+            this.Controls.Add(this.btn_ok);
+            this.Controls.Add(this.rb_digSpel);
+            this.Controls.Add(this.rb_fysSpel);
+            this.Controls.Add(this.btn_adderaUpd);
+            this.Controls.Add(this.lbx_spel);
             this.Controls.Add(this.lbl_nedladd);
             this.Controls.Add(this.tbx_jaNej);
             this.Controls.Add(this.lbl_digFys);
@@ -232,5 +305,11 @@ namespace johns_projekt
         private System.Windows.Forms.TextBox tbx_digFys;
         private System.Windows.Forms.Label lbl_nedladd;
         private System.Windows.Forms.TextBox tbx_jaNej;
+        private System.Windows.Forms.ListBox lbx_spel;
+        private System.Windows.Forms.Button btn_adderaUpd;
+        private System.Windows.Forms.RadioButton rb_fysSpel;
+        private System.Windows.Forms.RadioButton rb_digSpel;
+        private System.Windows.Forms.Button btn_ok;
+        private System.Windows.Forms.Button btn_avbryt;
     }
 }

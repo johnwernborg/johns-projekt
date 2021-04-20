@@ -16,5 +16,21 @@ namespace johns_projekt
         {
             InitializeComponent();
         }
+
+        private void btn_mapp_Click(object sender, EventArgs e)
+        {
+            //Välja mapp där spelet laddas ner
+            OpenFileDialog filValjare = new OpenFileDialog();
+            filValjare.Filter = "";
+            DialogResult result = filValjare.ShowDialog();
+            if(result == DialogResult.OK)
+            {
+
+            }
+            else
+            {
+
+            }
+        }
     }
 }

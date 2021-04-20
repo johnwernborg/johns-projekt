@@ -125,25 +125,16 @@ namespace johns_projekt
 
         private void btn_hamtaSpel_Click(object sender, EventArgs e)
         {
-            //Känner av vilket spel man vill köpa
+            //Känner av vilket spel man vill köpa (OBS! ändra från listbox till datagridview)
             Spel aktuelltSpel = (Spel)lbx_spel.SelectedValue;
-            //Om man ska beställa hem spelet öppnas beställ-fönstret,
-            //annars öppnas laddaner-fönstret
-            if (btn_hamtaSpel.Text == "Beställ")
-            {
-                var newForm = new frm_bestall();
-                //För över produktID till beställ-fönstret
-                newForm.hamtaProduktInfo(aktuelltSpel);
+            var newForm = new frm_bestall();
+            //För över produktID till beställ-fönstret
+            newForm.hamtaProduktInfo(aktuelltSpel);
 
-                newForm.Show();
-            }
-            else
-            {
-                var newForm = new frm_laddaNer();
-                newForm.Show();
-            }
-
+            newForm.Show();
         }
+
+
 
         private void btn_rensa_Click(object sender, EventArgs e)
         {
@@ -183,7 +174,11 @@ namespace johns_projekt
 
         private void btn_laggTill_Click(object sender, EventArgs e)
         {
+            var newForm = new frm_adderaUppd();
+            //För över alla spel till beställ-fönstret
+            newForm.hamtaLista(MinaSpel);
 
+            newForm.Show();
         }
 
         private void btn_uppdatera_Click(object sender, EventArgs e)
@@ -192,8 +187,24 @@ namespace johns_projekt
 
             var newForm = new frm_adderaUppd();
             //För över produktID till beställ-fönstret
-            newForm.hamtaProduktInfo(aktuelltSpel);
+            newForm.hamtaSpel(aktuelltSpel);
 
+            newForm.Show();
+        }
+
+        public void hamtaUpdLista(List<Spel> nyLista)
+        {
+            MinaSpel = nyLista;
+        }
+
+        private void btn_laddaNer_Click(object sender, EventArgs e)
+        {
+            //Ska bara gå om nedladdninsbart är true
+
+            //Känner av vilket spel man vill köpa (OBS! ändra från listbox till datagridview)
+            Spel aktuelltSpel = (Spel)lbx_spel.SelectedValue;
+
+            var newForm = new frm_laddaNer();
             newForm.Show();
         }
     }
