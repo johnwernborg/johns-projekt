@@ -34,6 +34,7 @@ namespace johns_projekt
             this.btn_laddaNer = new System.Windows.Forms.Button();
             this.btn_ok = new System.Windows.Forms.Button();
             this.btn_avbryt = new System.Windows.Forms.Button();
+            this.dlgSparaFil = new System.Windows.Forms.SaveFileDialog();
             this.SuspendLayout();
             // 
             // btn_mapp
@@ -64,6 +65,7 @@ namespace johns_projekt
             this.btn_laddaNer.TabIndex = 16;
             this.btn_laddaNer.Text = "Ladda ner";
             this.btn_laddaNer.UseVisualStyleBackColor = true;
+            this.btn_laddaNer.Click += new System.EventHandler(this.btn_laddaNer_Click);
             // 
             // btn_ok
             // 
@@ -107,5 +109,6 @@ namespace johns_projekt
         private System.Windows.Forms.Button btn_laddaNer;
         private System.Windows.Forms.Button btn_ok;
         private System.Windows.Forms.Button btn_avbryt;
+        private System.Windows.Forms.SaveFileDialog dlgSparaFil;
     }
 }

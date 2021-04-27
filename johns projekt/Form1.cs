@@ -199,13 +199,15 @@ namespace johns_projekt
 
         private void btn_laddaNer_Click(object sender, EventArgs e)
         {
-            //Ska bara gå om nedladdninsbart är true
-
             //Känner av vilket spel man vill köpa (OBS! ändra från listbox till datagridview)
             Spel aktuelltSpel = (Spel)lbx_spel.SelectedValue;
-
-            var newForm = new frm_laddaNer();
-            newForm.Show();
+            //Ska bara gå om nedladdninsbart är true
+            if (aktuelltSpel.Nedladd)
+            {
+                var newForm = new frm_laddaNer();
+                newForm.hamtaSpel(aktuelltSpel);
+                newForm.Show();
+            }
         }
     }
 }
