@@ -1,2 +1,6 @@
 ﻿2021-04-19
 Kann du skick med en SQL-dump av din databas?
+
+Form1.cs, rad 106: Kolla https://www.delftstack.com/howto/csharp/how-to-sort-a-list-by-a-property-in-the-object-in-csharp/ för en enklare sortering. 
+
+Du borde inaktivera knappar mm  som inte fungera än. 
