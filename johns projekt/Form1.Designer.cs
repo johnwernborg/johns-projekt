@@ -48,11 +48,11 @@ namespace johns_projekt
             this.lbl_utgivning = new System.Windows.Forms.Label();
             this.lbl_pris = new System.Windows.Forms.Label();
             this.btn_sok = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgv_spel = new System.Windows.Forms.DataGridView();
             this.btn_radera = new System.Windows.Forms.Button();
             this.btn_uppdatera = new System.Windows.Forms.Button();
             this.btn_laggTill = new System.Windows.Forms.Button();
-            this.btn_laddaNer = new System.Windows.Forms.Button();
+            this.lbl_ejHitta = new System.Windows.Forms.Label();
             this.genreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.titelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.prisDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,7 +61,7 @@ namespace johns_projekt
             this.utgivningDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.spelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.fysisktSpelBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_spel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spelBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fysisktSpelBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -77,9 +77,9 @@ namespace johns_projekt
             // lbx_spel
             // 
             this.lbx_spel.FormattingEnabled = true;
-            this.lbx_spel.Location = new System.Drawing.Point(539, -1);
+            this.lbx_spel.Location = new System.Drawing.Point(466, 9);
             this.lbx_spel.Name = "lbx_spel";
-            this.lbx_spel.Size = new System.Drawing.Size(65, 30);
+            this.lbx_spel.Size = new System.Drawing.Size(65, 121);
             this.lbx_spel.TabIndex = 1;
             this.lbx_spel.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
@@ -87,7 +87,7 @@ namespace johns_projekt
             // 
             this.btn_hamtaSpel.Location = new System.Drawing.Point(439, 157);
             this.btn_hamtaSpel.Name = "btn_hamtaSpel";
-            this.btn_hamtaSpel.Size = new System.Drawing.Size(171, 23);
+            this.btn_hamtaSpel.Size = new System.Drawing.Size(165, 23);
             this.btn_hamtaSpel.TabIndex = 2;
             this.btn_hamtaSpel.Text = "Beställ";
             this.btn_hamtaSpel.UseVisualStyleBackColor = true;
@@ -106,7 +106,7 @@ namespace johns_projekt
             this.btn_rensa.Name = "btn_rensa";
             this.btn_rensa.Size = new System.Drawing.Size(75, 22);
             this.btn_rensa.TabIndex = 5;
-            this.btn_rensa.Text = "Rensa";
+            this.btn_rensa.Text = "Återställ";
             this.btn_rensa.UseVisualStyleBackColor = true;
             this.btn_rensa.Click += new System.EventHandler(this.btn_rensa_Click);
             // 
@@ -244,28 +244,30 @@ namespace johns_projekt
             this.btn_sok.TabIndex = 19;
             this.btn_sok.Text = "Sök";
             this.btn_sok.UseVisualStyleBackColor = true;
+            this.btn_sok.Click += new System.EventHandler(this.btn_sok_Click);
             // 
-            // dataGridView1
+            // dgv_spel
             // 
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgv_spel.AutoGenerateColumns = false;
+            this.dgv_spel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_spel.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.genreDataGridViewTextBoxColumn,
             this.titelDataGridViewTextBoxColumn,
             this.prisDataGridViewTextBoxColumn,
             this.aldersgransDataGridViewTextBoxColumn,
             this.plattformDataGridViewTextBoxColumn,
             this.utgivningDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.spelBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(11, 136);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(422, 236);
-            this.dataGridView1.TabIndex = 20;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dgv_spel.DataSource = this.spelBindingSource;
+            this.dgv_spel.Location = new System.Drawing.Point(11, 136);
+            this.dgv_spel.Name = "dgv_spel";
+            this.dgv_spel.Size = new System.Drawing.Size(422, 236);
+            this.dgv_spel.TabIndex = 20;
+            this.dgv_spel.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dgv_spel.CurrentCellChanged += new System.EventHandler(this.dgv_spel_CurrentCellChanged);
             // 
             // btn_radera
             // 
-            this.btn_radera.Location = new System.Drawing.Point(439, 237);
+            this.btn_radera.Location = new System.Drawing.Point(439, 203);
             this.btn_radera.Name = "btn_radera";
             this.btn_radera.Size = new System.Drawing.Size(171, 23);
             this.btn_radera.TabIndex = 21;
@@ -275,7 +277,7 @@ namespace johns_projekt
             // 
             // btn_uppdatera
             // 
-            this.btn_uppdatera.Location = new System.Drawing.Point(439, 266);
+            this.btn_uppdatera.Location = new System.Drawing.Point(439, 232);
             this.btn_uppdatera.Name = "btn_uppdatera";
             this.btn_uppdatera.Size = new System.Drawing.Size(171, 23);
             this.btn_uppdatera.TabIndex = 22;
@@ -285,7 +287,7 @@ namespace johns_projekt
             // 
             // btn_laggTill
             // 
-            this.btn_laggTill.Location = new System.Drawing.Point(439, 295);
+            this.btn_laggTill.Location = new System.Drawing.Point(439, 261);
             this.btn_laggTill.Name = "btn_laggTill";
             this.btn_laggTill.Size = new System.Drawing.Size(171, 23);
             this.btn_laggTill.TabIndex = 23;
@@ -293,15 +295,15 @@ namespace johns_projekt
             this.btn_laggTill.UseVisualStyleBackColor = true;
             this.btn_laggTill.Click += new System.EventHandler(this.btn_laggTill_Click);
             // 
-            // btn_laddaNer
+            // lbl_ejHitta
             // 
-            this.btn_laddaNer.Location = new System.Drawing.Point(439, 186);
-            this.btn_laddaNer.Name = "btn_laddaNer";
-            this.btn_laddaNer.Size = new System.Drawing.Size(171, 23);
-            this.btn_laddaNer.TabIndex = 24;
-            this.btn_laddaNer.Text = "Ladda ner";
-            this.btn_laddaNer.UseVisualStyleBackColor = true;
-            this.btn_laddaNer.Click += new System.EventHandler(this.btn_laddaNer_Click);
+            this.lbl_ejHitta.AutoSize = true;
+            this.lbl_ejHitta.Location = new System.Drawing.Point(301, 114);
+            this.lbl_ejHitta.Name = "lbl_ejHitta";
+            this.lbl_ejHitta.Size = new System.Drawing.Size(112, 13);
+            this.lbl_ejHitta.TabIndex = 25;
+            this.lbl_ejHitta.Text = "Kunde inte hitta spelet";
+            this.lbl_ejHitta.Visible = false;
             // 
             // genreDataGridViewTextBoxColumn
             // 
@@ -358,11 +360,11 @@ namespace johns_projekt
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(639, 460);
-            this.Controls.Add(this.btn_laddaNer);
+            this.Controls.Add(this.lbl_ejHitta);
             this.Controls.Add(this.btn_laggTill);
             this.Controls.Add(this.btn_uppdatera);
             this.Controls.Add(this.btn_radera);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgv_spel);
             this.Controls.Add(this.btn_sok);
             this.Controls.Add(this.lbl_pris);
             this.Controls.Add(this.lbl_utgivning);
@@ -382,8 +384,8 @@ namespace johns_projekt
             this.Controls.Add(this.lbx_spel);
             this.Controls.Add(this.tbx_spel);
             this.Name = "Form1";
-            this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Text = ".";
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_spel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spelBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fysisktSpelBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -411,7 +413,7 @@ namespace johns_projekt
         private System.Windows.Forms.Label lbl_utgivning;
         private System.Windows.Forms.Label lbl_pris;
         private System.Windows.Forms.Button btn_sok;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgv_spel;
         private System.Windows.Forms.BindingSource spelBindingSource;
         private System.Windows.Forms.BindingSource fysisktSpelBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn genreDataGridViewTextBoxColumn;
@@ -423,7 +425,7 @@ namespace johns_projekt
         private System.Windows.Forms.Button btn_radera;
         private System.Windows.Forms.Button btn_uppdatera;
         private System.Windows.Forms.Button btn_laggTill;
-        private System.Windows.Forms.Button btn_laddaNer;
+        private System.Windows.Forms.Label lbl_ejHitta;
     }
 }
 

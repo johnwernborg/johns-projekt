@@ -33,9 +33,9 @@ namespace johns_projekt
             this.tbx_address = new System.Windows.Forms.TextBox();
             this.tbx_kontaktnamn = new System.Windows.Forms.TextBox();
             this.tbx_telenum = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lbl_address = new System.Windows.Forms.Label();
+            this.lbl_kontaktNamn = new System.Windows.Forms.Label();
+            this.lbl_telenum = new System.Windows.Forms.Label();
             this.btn_bestall = new System.Windows.Forms.Button();
             this.btn_avbryt = new System.Windows.Forms.Button();
             this.btn_ok = new System.Windows.Forms.Button();
@@ -78,32 +78,32 @@ namespace johns_projekt
             this.tbx_telenum.Size = new System.Drawing.Size(100, 20);
             this.tbx_telenum.TabIndex = 3;
             // 
-            // label1
+            // lbl_address
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(281, 112);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Address";
+            this.lbl_address.AutoSize = true;
+            this.lbl_address.Location = new System.Drawing.Point(281, 112);
+            this.lbl_address.Name = "lbl_address";
+            this.lbl_address.Size = new System.Drawing.Size(45, 13);
+            this.lbl_address.TabIndex = 5;
+            this.lbl_address.Text = "Address";
             // 
-            // label2
+            // lbl_kontaktNamn
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(256, 159);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 13);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Kontaktnamn";
+            this.lbl_kontaktNamn.AutoSize = true;
+            this.lbl_kontaktNamn.Location = new System.Drawing.Point(256, 159);
+            this.lbl_kontaktNamn.Name = "lbl_kontaktNamn";
+            this.lbl_kontaktNamn.Size = new System.Drawing.Size(70, 13);
+            this.lbl_kontaktNamn.TabIndex = 6;
+            this.lbl_kontaktNamn.Text = "Kontaktnamn";
             // 
-            // label3
+            // lbl_telenum
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(246, 205);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 13);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Telefonnummer";
+            this.lbl_telenum.AutoSize = true;
+            this.lbl_telenum.Location = new System.Drawing.Point(246, 205);
+            this.lbl_telenum.Name = "lbl_telenum";
+            this.lbl_telenum.Size = new System.Drawing.Size(80, 13);
+            this.lbl_telenum.TabIndex = 7;
+            this.lbl_telenum.Text = "Telefonnummer";
             // 
             // btn_bestall
             // 
@@ -203,9 +203,9 @@ namespace johns_projekt
             this.Controls.Add(this.btn_ok);
             this.Controls.Add(this.btn_avbryt);
             this.Controls.Add(this.btn_bestall);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbl_telenum);
+            this.Controls.Add(this.lbl_kontaktNamn);
+            this.Controls.Add(this.lbl_address);
             this.Controls.Add(this.tbx_telenum);
             this.Controls.Add(this.tbx_kontaktnamn);
             this.Controls.Add(this.tbx_address);
@@ -225,9 +225,9 @@ namespace johns_projekt
         private System.Windows.Forms.TextBox tbx_address;
         private System.Windows.Forms.TextBox tbx_kontaktnamn;
         private System.Windows.Forms.TextBox tbx_telenum;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lbl_address;
+        private System.Windows.Forms.Label lbl_kontaktNamn;
+        private System.Windows.Forms.Label lbl_telenum;
         private System.Windows.Forms.Button btn_bestall;
         private System.Windows.Forms.Button btn_avbryt;
         private System.Windows.Forms.Button btn_ok;

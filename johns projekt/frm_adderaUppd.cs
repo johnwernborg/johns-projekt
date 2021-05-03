@@ -125,5 +125,11 @@ namespace johns_projekt
             newForm.hamtaUpdLista(MinaNyaSpel);
             frm_adderaUppd.ActiveForm.Close();
         }
+
+        private void btn_avbryt_Click(object sender, EventArgs e)
+        {
+            //Kanske rensa alla textboxer?
+            this.Close();
+        }
     }
 }

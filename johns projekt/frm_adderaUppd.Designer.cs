@@ -52,6 +52,7 @@ namespace johns_projekt
             this.rb_digSpel = new System.Windows.Forms.RadioButton();
             this.btn_ok = new System.Windows.Forms.Button();
             this.btn_avbryt = new System.Windows.Forms.Button();
+            this.lbl_lagtTill = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // tbx_valtSpel
@@ -250,12 +251,24 @@ namespace johns_projekt
             this.btn_avbryt.TabIndex = 23;
             this.btn_avbryt.Text = "Avbryt";
             this.btn_avbryt.UseVisualStyleBackColor = true;
+            this.btn_avbryt.Click += new System.EventHandler(this.btn_avbryt_Click);
+            // 
+            // lbl_lagtTill
+            // 
+            this.lbl_lagtTill.AutoSize = true;
+            this.lbl_lagtTill.Location = new System.Drawing.Point(303, 288);
+            this.lbl_lagtTill.Name = "lbl_lagtTill";
+            this.lbl_lagtTill.Size = new System.Drawing.Size(92, 13);
+            this.lbl_lagtTill.TabIndex = 24;
+            this.lbl_lagtTill.Text = "Spelet har lagts till";
+            this.lbl_lagtTill.Visible = false;
             // 
             // frm_adderaUppd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(455, 310);
+            this.Controls.Add(this.lbl_lagtTill);
             this.Controls.Add(this.btn_avbryt);
             this.Controls.Add(this.btn_ok);
             this.Controls.Add(this.rb_digSpel);
@@ -311,5 +324,6 @@ namespace johns_projekt
         private System.Windows.Forms.RadioButton rb_digSpel;
         private System.Windows.Forms.Button btn_ok;
         private System.Windows.Forms.Button btn_avbryt;
+        private System.Windows.Forms.Label lbl_lagtTill;
     }
 }
