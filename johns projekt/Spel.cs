@@ -15,19 +15,17 @@ namespace johns_projekt
         string genre;
         int aldersgrans;
         string plattform;
-        bool nedladd;
         int pris;
         int utgivning;
 
         public Spel(int id, string titel, string genre, int aldersgrans, string plattform, 
-            bool nedladd, int pris, int utgivning)
+            int pris, int utgivning)
         {
             Id = id;
             Titel = titel;
             Genre = genre;
             Aldersgrans = aldersgrans;
             Plattform = plattform;
-            Nedladd = nedladd;
             Pris = pris;
             Utgivning = utgivning;
         }
@@ -40,13 +38,11 @@ namespace johns_projekt
 
         public virtual string GetShortInfo()
         {
-            string nedladdning = "Nedladdningsbart";
-            if (!Nedladd) nedladdning = "Ej nedladdningsbart";
             int pris = 0;
             if (Pris > 0) pris = Pris;
 
             return $"{Titel}{nyRad}Genre: {Genre}{nyRad}Aldersgrans: {Aldersgrans}+{nyRad}Plattform: {Plattform}" +
-                $"{nyRad}{nedladdning}{nyRad}Pris: {Pris} kr{nyRad}Utgivningsår: {Utgivning}";
+                $"{nyRad}Pris: {Pris} kr{nyRad}Utgivningsår: {Utgivning}";
         }
 
         public int CompareTo(Spel other)
@@ -76,7 +72,6 @@ namespace johns_projekt
         public string Genre { get => genre; set => genre = value; }
         public int Aldersgrans { get => aldersgrans; set => aldersgrans = value; }
         public string Plattform { get => plattform; set => plattform = value; }
-        public bool Nedladd { get => nedladd; set => nedladd = value; }
         public int Pris { get => pris; set => pris = value; }
 
         public string Titel { get => titel; set => titel = value; }

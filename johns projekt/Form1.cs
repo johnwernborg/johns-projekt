@@ -62,7 +62,7 @@ namespace johns_projekt
         private void btn_sort_Click(object sender, EventArgs e)
         {
             //Kollar om varje radiobutton är itryckt och sorterar utefter det listan
-            if (rb_az.Checked)
+            if (rb_az.Checked || rb_za.Checked)
             {
                 MinaSpel = MinaSpel.OrderBy(spel => spel.Titel).ToList<Spel>();
                 if (rb_za.Checked)
@@ -70,7 +70,7 @@ namespace johns_projekt
                     MinaSpel.Reverse();
                 }
             }
-            else if (rb_stigande.Checked)
+            else if (rb_stigande.Checked || rb_fallande.Checked)
             {
                 MinaSpel = MinaSpel.OrderBy(spel => spel.Pris).ToList<Spel>();
                 if (rb_fallande.Checked)
@@ -78,7 +78,7 @@ namespace johns_projekt
                     MinaSpel.Reverse();
                 }
             }
-            else if (rb_retro.Checked)
+            else if (rb_retro.Checked || rb_modernt.Checked)
             {
                 MinaSpel = MinaSpel.OrderBy(spel => spel.Utgivning).ToList<Spel>();
                 if (rb_modernt.Checked)
@@ -100,8 +100,8 @@ namespace johns_projekt
         private void btn_hamtaSpel_Click(object sender, EventArgs e)
         {
             //Känner av vilket spel man vill köpa (OBS! ändra från listbox till datagridview)
-            Spel aktuelltSpel = (Spel)lbx_spel.SelectedValue;
-            if(btn_hamtaSpel.Text == "Beställ")
+            Spel aktuelltSpel = (Spel)dgv_spel.CurrentRow.DataBoundItem;
+            if (btn_hamtaSpel.Text == "Beställ")
             {
                 var newForm = new frm_bestall();
                 //För över produktID till beställ-fönstret
@@ -156,12 +156,13 @@ namespace johns_projekt
             Spel aktuelltSpel = (Spel)dgv_spel.CurrentRow.DataBoundItem;
 
             //Raderar aktuellt spel
-            //Blir felmeddelande med databasen men spelet tas bort?
             string sqlsats = $"Delete From spel Where ProduktID = {aktuelltSpel.Id}";
             MySqlCommand cmd = new MySqlCommand(sqlsats, conn);
             MySqlDataReader dataReader = cmd.ExecuteReader();
             MinaSpel.Remove(aktuelltSpel);
             conn.Close();
+            dgv_spel.DataSource = null;
+            dgv_spel.DataSource = MinaSpel;
         }
 
         private void btn_laggTill_Click(object sender, EventArgs e)
@@ -175,18 +176,24 @@ namespace johns_projekt
 
         private void btn_uppdatera_Click(object sender, EventArgs e)
         {
-            Spel aktuelltSpel = (Spel)lbx_spel.SelectedValue;
+            //OBS OBS OBS OBS OBS
+            //KOLLA PÅ DETTA NÄSTA GÅNG!!!!
+            //if (dgv_spel.CurrentRow.DataBoundItem is FysisktSpel)
+            //{
+            //    FysisktSpel aktuelltFysSpel = (FysisktSpel)dgv_spel.CurrentRow.DataBoundItem;
+            //}
 
-            var newForm = new frm_adderaUppd();
-            //För över produktID till beställ-fönstret
-            newForm.hamtaSpel(aktuelltSpel);
+            //var newForm = new frm_adderaUppd();
+            ////För över produktID till beställ-fönstret
 
-            newForm.Show();
+            //newForm.hamtaSpel(aktuelltSpel, );
+
+            //newForm.Show();
         }
 
-        public void hamtaUpdLista(List<Spel> nyLista)
+        public void hamtaNyttSpel(Spel nyttSpel)
         {
-            MinaSpel = nyLista;
+            MinaSpel.Add(nyttSpel);
             dgv_spel.DataSource = null;
             dgv_spel.DataSource = MinaSpel;
         }
@@ -194,9 +201,9 @@ namespace johns_projekt
         private void btn_laddaNer_Click(object sender, EventArgs e)
         {
             //Känner av vilket spel man vill köpa (OBS! ändra från listbox till datagridview)
-            Spel aktuelltSpel = (Spel)lbx_spel.SelectedValue;
+            Spel aktuelltSpel = (Spel)dgv_spel.CurrentRow.DataBoundItem;
             //Ska bara gå om nedladdninsbart är true
-            if (aktuelltSpel.Nedladd)
+            if (aktuelltSpel is DigitaltSpel)
             {
                 var newForm = new frm_laddaNer();
                 newForm.hamtaSpel(aktuelltSpel);
@@ -206,16 +213,18 @@ namespace johns_projekt
 
         private void dgv_spel_CurrentCellChanged(object sender, EventArgs e)
         {
-            Spel aktuelltSpel = (Spel)lbx_spel.SelectedValue;
-            lbl_spel.Text = aktuelltSpel.Titel;
-            if (aktuelltSpel.Nedladd)
+            if(dgv_spel.DataSource != null)
             {
-                if(aktuelltSpel is FysisktSpel) btn_hamtaSpel.Text = "Beställ / Ladda ner";
-                else btn_hamtaSpel.Text = "Ladda ner";
-            }
-            else
-            {
-                btn_hamtaSpel.Text = "Beställ";
+                Spel aktuelltSpel = (Spel)lbx_spel.SelectedItem;
+                lbl_spel.Text = aktuelltSpel.Titel;
+                if (aktuelltSpel is DigitaltSpel)
+                {
+                    btn_hamtaSpel.Text = "Ladda ner";
+                }
+                else
+                {
+                    btn_hamtaSpel.Text = "Beställ";
+                }
             }
         }
 
@@ -295,16 +304,16 @@ namespace johns_projekt
                     }
                 }
                 //Kollar ifall det är fysiskt eller digitalt, fysiskt har en kolumn med bool
-                if (kolumner.Contains("false"))
+                if (kolumner[8] == 0.ToString() || kolumner[8] == "NULL")
                 {
                     FysisktSpel sp = new FysisktSpel(int.Parse(kolumner[0]), kolumner[1], kolumner[2], int.Parse(kolumner[3]),
-                             kolumner[4], bool.Parse(kolumner[5]), int.Parse(kolumner[6]), int.Parse(kolumner[7]), int.Parse(kolumner[8]));
+                             kolumner[4], int.Parse(kolumner[5]), int.Parse(kolumner[6]), int.Parse(kolumner[7]));
                     MinaSpel.Add(sp);
                 }
                 else
                 {
                     DigitaltSpel sp = new DigitaltSpel(int.Parse(kolumner[0]), kolumner[1], kolumner[2], int.Parse(kolumner[3]),
-                                kolumner[4], bool.Parse(kolumner[5]), int.Parse(kolumner[6]), int.Parse(kolumner[7]), int.Parse(kolumner[9]));
+                                kolumner[4], int.Parse(kolumner[5]), int.Parse(kolumner[6]), int.Parse(kolumner[8]));
                     MinaSpel.Add(sp);
                 }
             }

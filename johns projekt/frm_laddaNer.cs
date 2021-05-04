@@ -83,13 +83,6 @@ namespace johns_projekt
             MySqlDataReader dataReader = cmd.ExecuteReader();
             conn.Close();
 
-            //Skickar orderinfo till orders
-            conn.Open();
-            sqlsats = $"Insert Into orders(ProduktID, KundID, OrderPris, Frakt, Datum) Values ({produktId}, 1, {produktPris}, 20, 'NULL')";
-            MySqlCommand cmd2 = new MySqlCommand(sqlsats, conn);
-            MySqlDataReader dataReader2 = cmd2.ExecuteReader();
-            conn.Close();
-
             lbl_laddatNer.Visible = true;
         }
 
@@ -97,6 +90,11 @@ namespace johns_projekt
         {
             laddaNerSpel = valtSpel;
             lbl_valtSpel.Text = laddaNerSpel.Titel;
+        }
+
+        private void btn_ok_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

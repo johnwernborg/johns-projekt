@@ -44,8 +44,6 @@ namespace johns_projekt
             this.tbx_pris = new System.Windows.Forms.TextBox();
             this.lbl_digFys = new System.Windows.Forms.Label();
             this.tbx_digFys = new System.Windows.Forms.TextBox();
-            this.lbl_nedladd = new System.Windows.Forms.Label();
-            this.tbx_jaNej = new System.Windows.Forms.TextBox();
             this.lbx_spel = new System.Windows.Forms.ListBox();
             this.btn_adderaUpd = new System.Windows.Forms.Button();
             this.rb_fysSpel = new System.Windows.Forms.RadioButton();
@@ -162,7 +160,7 @@ namespace johns_projekt
             // lbl_digFys
             // 
             this.lbl_digFys.AutoSize = true;
-            this.lbl_digFys.Location = new System.Drawing.Point(226, 212);
+            this.lbl_digFys.Location = new System.Drawing.Point(226, 186);
             this.lbl_digFys.Name = "lbl_digFys";
             this.lbl_digFys.Size = new System.Drawing.Size(75, 13);
             this.lbl_digFys.TabIndex = 15;
@@ -170,26 +168,10 @@ namespace johns_projekt
             // 
             // tbx_digFys
             // 
-            this.tbx_digFys.Location = new System.Drawing.Point(306, 209);
+            this.tbx_digFys.Location = new System.Drawing.Point(306, 183);
             this.tbx_digFys.Name = "tbx_digFys";
             this.tbx_digFys.Size = new System.Drawing.Size(100, 20);
             this.tbx_digFys.TabIndex = 14;
-            // 
-            // lbl_nedladd
-            // 
-            this.lbl_nedladd.AutoSize = true;
-            this.lbl_nedladd.Location = new System.Drawing.Point(210, 186);
-            this.lbl_nedladd.Name = "lbl_nedladd";
-            this.lbl_nedladd.Size = new System.Drawing.Size(90, 13);
-            this.lbl_nedladd.TabIndex = 17;
-            this.lbl_nedladd.Text = "Nedladdningsbart";
-            // 
-            // tbx_jaNej
-            // 
-            this.tbx_jaNej.Location = new System.Drawing.Point(306, 183);
-            this.tbx_jaNej.Name = "tbx_jaNej";
-            this.tbx_jaNej.Size = new System.Drawing.Size(100, 20);
-            this.tbx_jaNej.TabIndex = 16;
             // 
             // lbx_spel
             // 
@@ -201,7 +183,7 @@ namespace johns_projekt
             // 
             // btn_adderaUpd
             // 
-            this.btn_adderaUpd.Location = new System.Drawing.Point(306, 241);
+            this.btn_adderaUpd.Location = new System.Drawing.Point(306, 215);
             this.btn_adderaUpd.Name = "btn_adderaUpd";
             this.btn_adderaUpd.Size = new System.Drawing.Size(100, 41);
             this.btn_adderaUpd.TabIndex = 19;
@@ -212,7 +194,7 @@ namespace johns_projekt
             // rb_fysSpel
             // 
             this.rb_fysSpel.AutoSize = true;
-            this.rb_fysSpel.Location = new System.Drawing.Point(216, 241);
+            this.rb_fysSpel.Location = new System.Drawing.Point(216, 215);
             this.rb_fysSpel.Name = "rb_fysSpel";
             this.rb_fysSpel.Size = new System.Drawing.Size(79, 17);
             this.rb_fysSpel.TabIndex = 20;
@@ -224,7 +206,7 @@ namespace johns_projekt
             // rb_digSpel
             // 
             this.rb_digSpel.AutoSize = true;
-            this.rb_digSpel.Location = new System.Drawing.Point(216, 265);
+            this.rb_digSpel.Location = new System.Drawing.Point(216, 239);
             this.rb_digSpel.Name = "rb_digSpel";
             this.rb_digSpel.Size = new System.Drawing.Size(79, 17);
             this.rb_digSpel.TabIndex = 21;
@@ -256,7 +238,7 @@ namespace johns_projekt
             // lbl_lagtTill
             // 
             this.lbl_lagtTill.AutoSize = true;
-            this.lbl_lagtTill.Location = new System.Drawing.Point(303, 288);
+            this.lbl_lagtTill.Location = new System.Drawing.Point(303, 262);
             this.lbl_lagtTill.Name = "lbl_lagtTill";
             this.lbl_lagtTill.Size = new System.Drawing.Size(92, 13);
             this.lbl_lagtTill.TabIndex = 24;
@@ -275,8 +257,6 @@ namespace johns_projekt
             this.Controls.Add(this.rb_fysSpel);
             this.Controls.Add(this.btn_adderaUpd);
             this.Controls.Add(this.lbx_spel);
-            this.Controls.Add(this.lbl_nedladd);
-            this.Controls.Add(this.tbx_jaNej);
             this.Controls.Add(this.lbl_digFys);
             this.Controls.Add(this.tbx_digFys);
             this.Controls.Add(this.lbl_pris);
@@ -316,8 +296,6 @@ namespace johns_projekt
         private System.Windows.Forms.TextBox tbx_pris;
         private System.Windows.Forms.Label lbl_digFys;
         private System.Windows.Forms.TextBox tbx_digFys;
-        private System.Windows.Forms.Label lbl_nedladd;
-        private System.Windows.Forms.TextBox tbx_jaNej;
         private System.Windows.Forms.ListBox lbx_spel;
         private System.Windows.Forms.Button btn_adderaUpd;
         private System.Windows.Forms.RadioButton rb_fysSpel;
