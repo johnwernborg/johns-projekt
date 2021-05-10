@@ -29,7 +29,6 @@ namespace johns_projekt
         /// </summary>
         private void InitializeComponent()
         {
-            this.tbx_valtSpel = new System.Windows.Forms.TextBox();
             this.tbx_titel = new System.Windows.Forms.TextBox();
             this.lbl_titel = new System.Windows.Forms.Label();
             this.lbl_genre = new System.Windows.Forms.Label();
@@ -52,14 +51,6 @@ namespace johns_projekt
             this.btn_avbryt = new System.Windows.Forms.Button();
             this.lbl_lagtTill = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // tbx_valtSpel
-            // 
-            this.tbx_valtSpel.Location = new System.Drawing.Point(425, 12);
-            this.tbx_valtSpel.Multiline = true;
-            this.tbx_valtSpel.Name = "tbx_valtSpel";
-            this.tbx_valtSpel.Size = new System.Drawing.Size(18, 25);
-            this.tbx_valtSpel.TabIndex = 1;
             // 
             // tbx_titel
             // 
@@ -176,7 +167,7 @@ namespace johns_projekt
             // lbx_spel
             // 
             this.lbx_spel.FormattingEnabled = true;
-            this.lbx_spel.Location = new System.Drawing.Point(21, 30);
+            this.lbx_spel.Location = new System.Drawing.Point(21, 27);
             this.lbx_spel.Name = "lbx_spel";
             this.lbx_spel.Size = new System.Drawing.Size(183, 199);
             this.lbx_spel.TabIndex = 18;
@@ -271,7 +262,6 @@ namespace johns_projekt
             this.Controls.Add(this.tbx_genre);
             this.Controls.Add(this.lbl_titel);
             this.Controls.Add(this.tbx_titel);
-            this.Controls.Add(this.tbx_valtSpel);
             this.Name = "frm_adderaUppd";
             this.Text = "frm_adderaUppd";
             this.ResumeLayout(false);
@@ -280,8 +270,6 @@ namespace johns_projekt
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox tbx_valtSpel;
         private System.Windows.Forms.TextBox tbx_titel;
         private System.Windows.Forms.Label lbl_titel;
         private System.Windows.Forms.Label lbl_genre;

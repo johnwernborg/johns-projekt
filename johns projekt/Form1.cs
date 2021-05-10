@@ -29,7 +29,7 @@ namespace johns_projekt
             //MinaSpel.Add(new DigitaltSpel("The Legend of Zelda: Twilight Princess", "Äventyr", 7, "Nintendo Wii", false, 399, 2006, 1, 26));
 
 
-            lbx_spel.DataSource = MinaSpel;
+            //lbx_spel.DataSource = MinaSpel;
             dgv_spel.DataSource = MinaSpel;
         }
 
@@ -89,9 +89,9 @@ namespace johns_projekt
 
 
             //Sortera utefter vad användaren har valt
-            lbx_spel.DataSource = null;
-            lbx_spel.Items.Clear();
-            lbx_spel.DataSource = MinaSpel;
+            //lbx_spel.DataSource = null;
+            //lbx_spel.Items.Clear();
+            //lbx_spel.DataSource = MinaSpel;
             dgv_spel.DataSource = null;
             dgv_spel.DataSource = MinaSpel;
 
@@ -156,7 +156,7 @@ namespace johns_projekt
             Spel aktuelltSpel = (Spel)dgv_spel.CurrentRow.DataBoundItem;
 
             //Raderar aktuellt spel
-            string sqlsats = $"Delete From spel Where ProduktID = {aktuelltSpel.Id}";
+            string sqlsats = $"DELETE FROM spel WHERE ProduktID = {aktuelltSpel.Id}";
             MySqlCommand cmd = new MySqlCommand(sqlsats, conn);
             MySqlDataReader dataReader = cmd.ExecuteReader();
             MinaSpel.Remove(aktuelltSpel);
@@ -178,17 +178,26 @@ namespace johns_projekt
         {
             //OBS OBS OBS OBS OBS
             //KOLLA PÅ DETTA NÄSTA GÅNG!!!!
-            //if (dgv_spel.CurrentRow.DataBoundItem is FysisktSpel)
-            //{
-            //    FysisktSpel aktuelltFysSpel = (FysisktSpel)dgv_spel.CurrentRow.DataBoundItem;
-            //}
+            var newForm = new frm_adderaUppd();
+            if (dgv_spel.CurrentRow.DataBoundItem is FysisktSpel)
+            {
+                FysisktSpel aktuelltFysSpel = (FysisktSpel)dgv_spel.CurrentRow.DataBoundItem;
+                newForm.hamtaSpel(aktuelltFysSpel, 0, aktuelltFysSpel.Enheter);
+            }
+            else if (dgv_spel.CurrentRow.DataBoundItem is DigitaltSpel)
+            {
+                DigitaltSpel aktuelltDigSpel = (DigitaltSpel)dgv_spel.CurrentRow.DataBoundItem;
+                newForm.hamtaSpel(aktuelltDigSpel, aktuelltDigSpel.Nedladdningar, 0);
+            }
+            if (DialogResult.OK == newForm.ShowDialog())
+            {
+                
 
-            //var newForm = new frm_adderaUppd();
-            ////För över produktID till beställ-fönstret
-
-            //newForm.hamtaSpel(aktuelltSpel, );
-
-            //newForm.Show();
+                MinaSpel.Clear();
+                LäsInAllaSpel(MinaSpel);
+                dgv_spel.DataSource = null;
+                dgv_spel.DataSource = MinaSpel;
+            }
         }
 
         public void hamtaNyttSpel(Spel nyttSpel)
@@ -213,9 +222,9 @@ namespace johns_projekt
 
         private void dgv_spel_CurrentCellChanged(object sender, EventArgs e)
         {
-            if(dgv_spel.DataSource != null)
+            if(dgv_spel.DataSource != null && dgv_spel.CurrentRow != null)
             {
-                Spel aktuelltSpel = (Spel)lbx_spel.SelectedItem;
+                Spel aktuelltSpel = (Spel)dgv_spel.CurrentRow.DataBoundItem;
                 lbl_spel.Text = aktuelltSpel.Titel;
                 if (aktuelltSpel is DigitaltSpel)
                 {

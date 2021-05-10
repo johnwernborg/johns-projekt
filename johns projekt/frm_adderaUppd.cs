@@ -32,7 +32,6 @@ namespace johns_projekt
 
         public void hamtaSpel(Spel valtSpel, int nedladdningar, int enheter)
         {
-            tbx_valtSpel.Text = valtSpel.GetShortInfo();
 
             tbx_titel.Text = valtSpel.Titel;
             tbx_genre.Text = valtSpel.Genre;
@@ -43,12 +42,16 @@ namespace johns_projekt
             if(valtSpel is DigitaltSpel)
             {
                 lbl_digFys.Text = "Nedladdningar";
-                tbx_digFys.Text = "Nedladdningar";
+                tbx_digFys.Text = nedladdningar.ToString();
+                rb_digSpel.Checked = true;
+                rb_fysSpel.Enabled = false;
             }
             else if(valtSpel is FysisktSpel)
             {
                 lbl_digFys.Text = "Enheter i lager";
-                tbx_digFys.Text = "Enheter i lager";
+                tbx_digFys.Text = enheter.ToString();
+                rb_fysSpel.Checked = true;
+                rb_digSpel.Enabled = false;
             }
 
             btn_adderaUpd.Text = "Uppdatera spelet";
@@ -84,13 +87,14 @@ namespace johns_projekt
                 conn.Open();
 
                 //Uppdaterar spelet med alla värdena i textboxarna
-                string sqlsats = $"Update spel Set ProduktNamn = '{titel}', ProduktGenre = '{genre}', Aldersgrans = {aldersgrans}'" +
+                string sqlsats = $"UPDATE spel SET ProduktNamn = '{titel}', ProduktGenre = '{genre}', Aldersgrans = {aldersgrans}" +
                     $", Plattform = '{plattform}', EnhetPris = {pris}, UtgivningsAr = {utgivning}, EnheterILager = {enheter}, Nedladdningar = {nedladdningar}" +
-                    $"Where ProduktID = {id}";
+                    $" WHERE ProduktID = {id}";
                 MySqlCommand cmd = new MySqlCommand(sqlsats, conn);
                 MySqlDataReader dataReader = cmd.ExecuteReader();
                 conn.Close();
                 lbl_lagtTill.Text = "Spelet har uppdaterats!";
+
 
             }
             else if(btn_adderaUpd.Text == "Lägg till nytt spel")
@@ -116,9 +120,9 @@ namespace johns_projekt
                 conn.Open();
 
                 //Skickar det nya spelet till databasen
-                string sqlsats = $"Insert Into spel(ProduktID, ProduktNamn, ProduktGenre, Aldersgrans, Plattform, Nedladdningsbart, " +
-                    $"EnhetPris, UtgivningsAr, EnheterILager, Nedladdningar) Values ('{id}', '{titel}', '{genre}', '{aldersgrans}', " +
-                    $"'{plattform}', '{pris}', '{utgivning}', '{enheter}', '{nedladdningar}')";
+                string sqlsats = $"Insert Into spel(ProduktID, ProduktNamn, ProduktGenre, Aldersgrans, Plattform, " +
+                    $"EnhetPris, UtgivningsAr, EnheterILager, Nedladdningar) Values ({id}, '{titel}', '{genre}', {aldersgrans}, " +
+                    $"'{plattform}', {pris}, {utgivning}, {enheter}, {nedladdningar})";
                 MySqlCommand cmd = new MySqlCommand(sqlsats, conn);
                 MySqlDataReader dataReader = cmd.ExecuteReader();
                 conn.Close();
@@ -141,7 +145,8 @@ namespace johns_projekt
         {
             var newForm = new Form1();
             newForm.hamtaNyttSpel(nyttSpel);
-            frm_adderaUppd.ActiveForm.Close();
+            //frm_adderaUppd.ActiveForm.Close();
+            this.DialogResult = DialogResult.OK;
         }
 
         private void btn_avbryt_Click(object sender, EventArgs e)

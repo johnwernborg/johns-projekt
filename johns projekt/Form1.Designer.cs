@@ -30,8 +30,6 @@ namespace johns_projekt
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.tbx_spel = new System.Windows.Forms.TextBox();
-            this.lbx_spel = new System.Windows.Forms.ListBox();
             this.btn_hamtaSpel = new System.Windows.Forms.Button();
             this.tbx_sok = new System.Windows.Forms.TextBox();
             this.btn_rensa = new System.Windows.Forms.Button();
@@ -49,10 +47,6 @@ namespace johns_projekt
             this.lbl_pris = new System.Windows.Forms.Label();
             this.btn_sok = new System.Windows.Forms.Button();
             this.dgv_spel = new System.Windows.Forms.DataGridView();
-            this.btn_radera = new System.Windows.Forms.Button();
-            this.btn_uppdatera = new System.Windows.Forms.Button();
-            this.btn_laggTill = new System.Windows.Forms.Button();
-            this.lbl_ejHitta = new System.Windows.Forms.Label();
             this.genreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.titelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.prisDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,28 +54,15 @@ namespace johns_projekt
             this.plattformDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.utgivningDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.spelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btn_radera = new System.Windows.Forms.Button();
+            this.btn_uppdatera = new System.Windows.Forms.Button();
+            this.btn_laggTill = new System.Windows.Forms.Button();
+            this.lbl_ejHitta = new System.Windows.Forms.Label();
             this.fysisktSpelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_spel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spelBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fysisktSpelBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // tbx_spel
-            // 
-            this.tbx_spel.Location = new System.Drawing.Point(576, 35);
-            this.tbx_spel.Multiline = true;
-            this.tbx_spel.Name = "tbx_spel";
-            this.tbx_spel.Size = new System.Drawing.Size(28, 25);
-            this.tbx_spel.TabIndex = 0;
-            // 
-            // lbx_spel
-            // 
-            this.lbx_spel.FormattingEnabled = true;
-            this.lbx_spel.Location = new System.Drawing.Point(466, 9);
-            this.lbx_spel.Name = "lbx_spel";
-            this.lbx_spel.Size = new System.Drawing.Size(65, 121);
-            this.lbx_spel.TabIndex = 1;
-            this.lbx_spel.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // btn_hamtaSpel
             // 
@@ -265,46 +246,6 @@ namespace johns_projekt
             this.dgv_spel.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dgv_spel.CurrentCellChanged += new System.EventHandler(this.dgv_spel_CurrentCellChanged);
             // 
-            // btn_radera
-            // 
-            this.btn_radera.Location = new System.Drawing.Point(440, 210);
-            this.btn_radera.Name = "btn_radera";
-            this.btn_radera.Size = new System.Drawing.Size(171, 23);
-            this.btn_radera.TabIndex = 21;
-            this.btn_radera.Text = "Radera valt spel";
-            this.btn_radera.UseVisualStyleBackColor = true;
-            this.btn_radera.Click += new System.EventHandler(this.btn_radera_Click);
-            // 
-            // btn_uppdatera
-            // 
-            this.btn_uppdatera.Location = new System.Drawing.Point(440, 239);
-            this.btn_uppdatera.Name = "btn_uppdatera";
-            this.btn_uppdatera.Size = new System.Drawing.Size(171, 23);
-            this.btn_uppdatera.TabIndex = 22;
-            this.btn_uppdatera.Text = "Uppdatera valt spel";
-            this.btn_uppdatera.UseVisualStyleBackColor = true;
-            this.btn_uppdatera.Click += new System.EventHandler(this.btn_uppdatera_Click);
-            // 
-            // btn_laggTill
-            // 
-            this.btn_laggTill.Location = new System.Drawing.Point(440, 268);
-            this.btn_laggTill.Name = "btn_laggTill";
-            this.btn_laggTill.Size = new System.Drawing.Size(171, 23);
-            this.btn_laggTill.TabIndex = 23;
-            this.btn_laggTill.Text = "Lägg till nytt spel";
-            this.btn_laggTill.UseVisualStyleBackColor = true;
-            this.btn_laggTill.Click += new System.EventHandler(this.btn_laggTill_Click);
-            // 
-            // lbl_ejHitta
-            // 
-            this.lbl_ejHitta.AutoSize = true;
-            this.lbl_ejHitta.Location = new System.Drawing.Point(302, 121);
-            this.lbl_ejHitta.Name = "lbl_ejHitta";
-            this.lbl_ejHitta.Size = new System.Drawing.Size(112, 13);
-            this.lbl_ejHitta.TabIndex = 25;
-            this.lbl_ejHitta.Text = "Kunde inte hitta spelet";
-            this.lbl_ejHitta.Visible = false;
-            // 
             // genreDataGridViewTextBoxColumn
             // 
             this.genreDataGridViewTextBoxColumn.DataPropertyName = "Genre";
@@ -351,6 +292,46 @@ namespace johns_projekt
             this.spelBindingSource.DataSource = typeof(johns_projekt.Spel);
             this.spelBindingSource.CurrentChanged += new System.EventHandler(this.spelBindingSource_CurrentChanged);
             // 
+            // btn_radera
+            // 
+            this.btn_radera.Location = new System.Drawing.Point(440, 210);
+            this.btn_radera.Name = "btn_radera";
+            this.btn_radera.Size = new System.Drawing.Size(171, 23);
+            this.btn_radera.TabIndex = 21;
+            this.btn_radera.Text = "Radera valt spel";
+            this.btn_radera.UseVisualStyleBackColor = true;
+            this.btn_radera.Click += new System.EventHandler(this.btn_radera_Click);
+            // 
+            // btn_uppdatera
+            // 
+            this.btn_uppdatera.Location = new System.Drawing.Point(440, 239);
+            this.btn_uppdatera.Name = "btn_uppdatera";
+            this.btn_uppdatera.Size = new System.Drawing.Size(171, 23);
+            this.btn_uppdatera.TabIndex = 22;
+            this.btn_uppdatera.Text = "Uppdatera valt spel";
+            this.btn_uppdatera.UseVisualStyleBackColor = true;
+            this.btn_uppdatera.Click += new System.EventHandler(this.btn_uppdatera_Click);
+            // 
+            // btn_laggTill
+            // 
+            this.btn_laggTill.Location = new System.Drawing.Point(440, 268);
+            this.btn_laggTill.Name = "btn_laggTill";
+            this.btn_laggTill.Size = new System.Drawing.Size(171, 23);
+            this.btn_laggTill.TabIndex = 23;
+            this.btn_laggTill.Text = "Lägg till nytt spel";
+            this.btn_laggTill.UseVisualStyleBackColor = true;
+            this.btn_laggTill.Click += new System.EventHandler(this.btn_laggTill_Click);
+            // 
+            // lbl_ejHitta
+            // 
+            this.lbl_ejHitta.AutoSize = true;
+            this.lbl_ejHitta.Location = new System.Drawing.Point(302, 121);
+            this.lbl_ejHitta.Name = "lbl_ejHitta";
+            this.lbl_ejHitta.Size = new System.Drawing.Size(112, 13);
+            this.lbl_ejHitta.TabIndex = 25;
+            this.lbl_ejHitta.Text = "Kunde inte hitta spelet";
+            this.lbl_ejHitta.Visible = false;
+            // 
             // fysisktSpelBindingSource
             // 
             this.fysisktSpelBindingSource.DataSource = typeof(johns_projekt.FysisktSpel);
@@ -381,8 +362,6 @@ namespace johns_projekt
             this.Controls.Add(this.btn_rensa);
             this.Controls.Add(this.tbx_sok);
             this.Controls.Add(this.btn_hamtaSpel);
-            this.Controls.Add(this.lbx_spel);
-            this.Controls.Add(this.tbx_spel);
             this.Name = "Form1";
             this.Text = ".";
             ((System.ComponentModel.ISupportInitialize)(this.dgv_spel)).EndInit();
@@ -394,9 +373,6 @@ namespace johns_projekt
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox tbx_spel;
-        private System.Windows.Forms.ListBox lbx_spel;
         private System.Windows.Forms.Button btn_hamtaSpel;
         private System.Windows.Forms.TextBox tbx_sok;
         private System.Windows.Forms.Button btn_rensa;
