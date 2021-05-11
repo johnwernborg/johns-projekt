@@ -39,7 +39,7 @@ namespace johns_projekt
             this.btn_bestall = new System.Windows.Forms.Button();
             this.btn_avbryt = new System.Windows.Forms.Button();
             this.btn_ok = new System.Windows.Forms.Button();
-            this.lbl_bestallSkickad = new System.Windows.Forms.Label();
+            this.lbl_bestallInfo = new System.Windows.Forms.Label();
             this.btn_bestallInfo = new System.Windows.Forms.Button();
             this.nud_antal = new System.Windows.Forms.NumericUpDown();
             this.lbl_valtSpel = new System.Windows.Forms.Label();
@@ -56,6 +56,7 @@ namespace johns_projekt
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 0;
             this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
+            this.monthCalendar1.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateSelected);
             // 
             // tbx_address
             // 
@@ -135,15 +136,15 @@ namespace johns_projekt
             this.btn_ok.UseVisualStyleBackColor = true;
             this.btn_ok.Click += new System.EventHandler(this.btn_ok_Click);
             // 
-            // lbl_bestallSkickad
+            // lbl_bestallInfo
             // 
-            this.lbl_bestallSkickad.AutoSize = true;
-            this.lbl_bestallSkickad.Location = new System.Drawing.Point(250, 258);
-            this.lbl_bestallSkickad.Name = "lbl_bestallSkickad";
-            this.lbl_bestallSkickad.Size = new System.Drawing.Size(131, 13);
-            this.lbl_bestallSkickad.TabIndex = 11;
-            this.lbl_bestallSkickad.Text = "Din beställning är skickad!";
-            this.lbl_bestallSkickad.Visible = false;
+            this.lbl_bestallInfo.AutoSize = true;
+            this.lbl_bestallInfo.Location = new System.Drawing.Point(250, 258);
+            this.lbl_bestallInfo.Name = "lbl_bestallInfo";
+            this.lbl_bestallInfo.Size = new System.Drawing.Size(130, 13);
+            this.lbl_bestallInfo.TabIndex = 11;
+            this.lbl_bestallInfo.Text = "Gick beställning eller inte?";
+            this.lbl_bestallInfo.Visible = false;
             // 
             // btn_bestallInfo
             // 
@@ -199,7 +200,7 @@ namespace johns_projekt
             this.Controls.Add(this.lbl_valtSpel);
             this.Controls.Add(this.nud_antal);
             this.Controls.Add(this.btn_bestallInfo);
-            this.Controls.Add(this.lbl_bestallSkickad);
+            this.Controls.Add(this.lbl_bestallInfo);
             this.Controls.Add(this.btn_ok);
             this.Controls.Add(this.btn_avbryt);
             this.Controls.Add(this.btn_bestall);
@@ -231,7 +232,7 @@ namespace johns_projekt
         private System.Windows.Forms.Button btn_bestall;
         private System.Windows.Forms.Button btn_avbryt;
         private System.Windows.Forms.Button btn_ok;
-        private System.Windows.Forms.Label lbl_bestallSkickad;
+        private System.Windows.Forms.Label lbl_bestallInfo;
         private System.Windows.Forms.Button btn_bestallInfo;
         private System.Windows.Forms.NumericUpDown nud_antal;
         private System.Windows.Forms.Label lbl_valtSpel;

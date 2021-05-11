@@ -67,23 +67,40 @@ namespace johns_projekt
             string produktTitel = laddaNerSpel.Titel;
             int produktPris = laddaNerSpel.Pris;
             string address = tbx_address.Text;
+            bool siffra = false;
+            bool bokstav = false;
+            //Kollar så att addressen är ok
+            foreach(char t in address)
+            {
+                int tecken = t;
+                if (tecken > 47 && tecken < 58) siffra = true;
+                if ((tecken > 64 && tecken < 90) || (tecken > 96 && tecken < 123)) bokstav = true;
+                if (siffra && bokstav) break;
+            }
+            if(siffra && bokstav)
+            {
+
+                //Hämtar koppling till databasen
+                string connectionString =
+    "SERVER=localhost;DATABASE=spelbutik;UID=lennart;PASSWORD=abcdef";
+                MySqlConnection conn = new MySqlConnection(connectionString);
+                conn.Open();
+
+                //Skickar kundinfo till kunder
+                string sqlsats = $"Insert Into kunder(KundID, KontaktNamn, Address, Telefon) Values (1, 'NEDLADDAT', '{address}', 'NEDLADDAT')";
+                MySqlCommand cmd = new MySqlCommand(sqlsats, conn);
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+                conn.Close();
 
 
+                
 
-
-            //Hämtar koppling till databasen
-            string connectionString =
-"SERVER=localhost;DATABASE=spelbutik;UID=lennart;PASSWORD=abcdef";
-            MySqlConnection conn = new MySqlConnection(connectionString);
-            conn.Open();
-
-            //Skickar kundinfo till kunder
-            string sqlsats = $"Insert Into kunder(KundID, KontaktNamn, Address, Telefon) Values (1, 'NULL', '{address}', 'NULL')";
-            MySqlCommand cmd = new MySqlCommand(sqlsats, conn);
-            MySqlDataReader dataReader = cmd.ExecuteReader();
-            conn.Close();
-
-            lbl_laddatNer.Visible = true;
+                lbl_laddatNer.Visible = true;
+            }
+            else
+            {
+                lbl_felAddress.Visible = true;
+            }
         }
 
         public void hamtaSpel(Spel valtSpel)
