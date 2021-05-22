@@ -38,7 +38,7 @@ namespace johns_projekt
                 //var newForm2 = new Form1();
                 //this.Hide();
                 //newForm2.Show();
-                
+
 
             }
         }

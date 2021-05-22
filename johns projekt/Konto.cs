@@ -8,14 +8,16 @@ namespace johns_projekt
 {
     public class Konto
     {
+        int id;
         string fornamn;
         string efternamn;
         string epost;
         string losenord;
         string roll;
 
-        public Konto(string fornamn, string efternamn, string epost, string losenord, string roll)
+        public Konto(int id, string fornamn, string efternamn, string epost, string losenord, string roll)
         {
+            Id = id;
             Fornamn = fornamn;
             Efternamn = efternamn;
             Epost = epost;
@@ -30,5 +32,6 @@ namespace johns_projekt
         public string Epost { get => epost; set => epost = value; }
         public string Losenord { get => losenord; set => losenord = value; }
         public string Roll { get => roll; set => roll = value; }
+        public int Id { get => id; set => id = value; }
     }
 }

@@ -69,7 +69,7 @@ namespace johns_projekt
             // 
             this.btn_hamtaSpel.Location = new System.Drawing.Point(29, 154);
             this.btn_hamtaSpel.Name = "btn_hamtaSpel";
-            this.btn_hamtaSpel.Size = new System.Drawing.Size(93, 23);
+            this.btn_hamtaSpel.Size = new System.Drawing.Size(111, 23);
             this.btn_hamtaSpel.TabIndex = 2;
             this.btn_hamtaSpel.Text = "Beställ";
             this.btn_hamtaSpel.UseVisualStyleBackColor = true;
@@ -96,7 +96,7 @@ namespace johns_projekt
             // 
             this.lbl_spel.AutoSize = true;
             this.lbl_spel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_spel.Location = new System.Drawing.Point(128, 155);
+            this.lbl_spel.Location = new System.Drawing.Point(143, 155);
             this.lbl_spel.Name = "lbl_spel";
             this.lbl_spel.Size = new System.Drawing.Size(72, 18);
             this.lbl_spel.TabIndex = 7;
@@ -252,7 +252,7 @@ namespace johns_projekt
             // 
             // btn_radera
             // 
-            this.btn_radera.Location = new System.Drawing.Point(146, 422);
+            this.btn_radera.Location = new System.Drawing.Point(162, 422);
             this.btn_radera.Name = "btn_radera";
             this.btn_radera.Size = new System.Drawing.Size(107, 23);
             this.btn_radera.TabIndex = 21;
@@ -262,7 +262,7 @@ namespace johns_projekt
             // 
             // btn_uppdatera
             // 
-            this.btn_uppdatera.Location = new System.Drawing.Point(259, 422);
+            this.btn_uppdatera.Location = new System.Drawing.Point(275, 422);
             this.btn_uppdatera.Name = "btn_uppdatera";
             this.btn_uppdatera.Size = new System.Drawing.Size(123, 23);
             this.btn_uppdatera.TabIndex = 22;
@@ -274,9 +274,9 @@ namespace johns_projekt
             // 
             this.btn_laggTill.Location = new System.Drawing.Point(29, 422);
             this.btn_laggTill.Name = "btn_laggTill";
-            this.btn_laggTill.Size = new System.Drawing.Size(111, 23);
+            this.btn_laggTill.Size = new System.Drawing.Size(127, 23);
             this.btn_laggTill.TabIndex = 23;
-            this.btn_laggTill.Text = "Lägg till nytt spel";
+            this.btn_laggTill.Text = "Nytt spel/Fakturor";
             this.btn_laggTill.UseVisualStyleBackColor = true;
             this.btn_laggTill.Click += new System.EventHandler(this.btn_laggTill_Click);
             // 
@@ -295,7 +295,7 @@ namespace johns_projekt
             this.lbl_kontoNamn.AutoSize = true;
             this.lbl_kontoNamn.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lbl_kontoNamn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_kontoNamn.Location = new System.Drawing.Point(390, 29);
+            this.lbl_kontoNamn.Location = new System.Drawing.Point(370, 28);
             this.lbl_kontoNamn.Name = "lbl_kontoNamn";
             this.lbl_kontoNamn.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lbl_kontoNamn.Size = new System.Drawing.Size(59, 15);
@@ -362,7 +362,7 @@ namespace johns_projekt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(494, 462);
+            this.ClientSize = new System.Drawing.Size(490, 462);
             this.Controls.Add(this.lbl_kontoNamn);
             this.Controls.Add(this.lbl_ejHitta);
             this.Controls.Add(this.btn_laggTill);

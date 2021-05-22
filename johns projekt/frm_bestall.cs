@@ -16,8 +16,7 @@ namespace johns_projekt
     {
         //Hämtas från första fönstret
         Spel bestalltSpel = new Spel();
-
-
+        Konto kundBestallt = new Konto();
 
         public frm_bestall()
         {
@@ -29,14 +28,11 @@ namespace johns_projekt
                 minDag = minDag.AddDays(1);
             }
             monthCalendar1.MinDate = minDag;
-            lbl_datum.Text = monthCalendar1.SelectionRange.Start.ToShortDateString();
 
             nud_antal.Value = 1;
             nud_antal.Minimum = 1;
 
             tbx_address.Text = "Linnégatan 29";
-            tbx_kontaktnamn.Text = "John Wernborg";
-            tbx_telenum.Text = "0767753637";
         }
 
         private void frm_bestall_Load(object sender, EventArgs e)
@@ -55,24 +51,20 @@ namespace johns_projekt
             lbl_bestallInfo.Visible = true;
             CultureInfo provider = CultureInfo.InvariantCulture;
 
-            //Måste hämta ProduktID och Pris från grundfönstret, 
-
             //Läser in all beställningsinfo
-            string produktId = bestalltSpel.Id.ToString();
+            int produktId = bestalltSpel.Id;
+            int kundId = kundBestallt.Id;
             string produktTitel = bestalltSpel.Titel;
             int produktPris = bestalltSpel.Pris;
-
             int antal = Convert.ToInt32(Math.Round(nud_antal.Value, 0));
+            int orderPris = produktPris * antal;
             string address = tbx_address.Text;
-            string kontaktnamn = tbx_kontaktnamn.Text;
-            string telefon = tbx_telenum.Text;
             string datumText = monthCalendar1.SelectionRange.Start.ToShortDateString();
             DateTime datum = DateTime.ParseExact(datumText, "yyyy-MM-dd", provider);
+            DateTime betalDatum = DateTime.Now.AddDays(30);
 
             bool adrSiffra = false;
             bool adrBokstav = false;
-            bool namnSiffra = false;
-            bool teleBokstav = false;
 
             //Kollar så att address är ok
             foreach (char t in address)
@@ -83,29 +75,7 @@ namespace johns_projekt
                 if (adrSiffra && adrBokstav) break;
             }
 
-            //Kollar så att kontaktnamn är ok
-            foreach (char t in kontaktnamn)
-            {
-                int tecken = t;
-                if (tecken > 47 && tecken < 58)
-                {
-                    namnSiffra = true;
-                    break;
-                }
-            }
-
-            //Kollar så att telefonnummer är ok
-            foreach (char t in telefon)
-            {
-                int tecken = t;
-                if ((tecken > 64 && tecken < 90) || (tecken > 96 && tecken < 123))
-                {
-                    teleBokstav = true;
-                    break;
-                }
-            }
-
-            if (adrBokstav && adrBokstav && !namnSiffra && !teleBokstav)
+            if (adrBokstav && adrBokstav)
             {
                 //Hämtar koppling till databasen
                 string connectionString =
@@ -114,17 +84,17 @@ namespace johns_projekt
                 conn.Open();
 
                 //Skickar kundinfo till kunder
-                string sqlsats = $"INSERT INTO kunder(KundID, KontaktNamn, Address, Telefon) VALUES (1, '{kontaktnamn}', '{address}', '{telefon}')";
+                string sqlsats = $"INSERT INTO orders(ProduktID, KundID, Address, OrderPris, Datum) " +
+                    $"VALUES ({produktId}, {kundId}, '{address}', {orderPris}, '{datum}')";
                 MySqlCommand cmd = new MySqlCommand(sqlsats, conn);
                 MySqlDataReader dataReader = cmd.ExecuteReader();
                 conn.Close();
 
-                //Skickar orderinfo till orders
+                //Skickar faktura till fakturor
                 conn.Open();
-                sqlsats = $"INSERT INTO orders(ProduktID, KundID, OrderPris, Frakt, Datum) VALUES ({produktId}, 1, {antal} * {produktPris}, 20, '{datum}')";
+                sqlsats = $"INSERT INTO fakturor(KundID, Pris, Datum) VALUES ({kundId}, {orderPris}, '{betalDatum}')";
                 MySqlCommand cmd2 = new MySqlCommand(sqlsats, conn);
                 MySqlDataReader dataReader2 = cmd2.ExecuteReader();
-                lbl_bestallInfo.Text = "Din beställning har skickats!";
                 conn.Close();
 
                 //Tar bort X enheter från spelet i lagret
@@ -133,6 +103,8 @@ namespace johns_projekt
                 MySqlCommand cmd3 = new MySqlCommand(sqlsats, conn);
                 MySqlDataReader dataReader3 = cmd3.ExecuteReader();
                 conn.Close();
+
+                lbl_bestallInfo.Text = "Beställningen är skickad!";
             }
             else
             {
@@ -148,20 +120,26 @@ namespace johns_projekt
             //Rensa textboxer eller inte???
         }
 
-        public void hamtaProduktInfo(Spel valtSpel)
+        public void hamtaOrderInfo(Spel valtSpel, Konto kund)
         {
             bestalltSpel = valtSpel;
+            kundBestallt = kund;
             lbl_valtSpel.Text = bestalltSpel.Titel;
         }
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
         {
-            lbl_datum.Text = monthCalendar1.SelectionRange.Start.ToShortDateString();
+            
         }
 
         private void monthCalendar1_DateSelected(object sender, DateRangeEventArgs e)
         {
-            lbl_datum.Text = monthCalendar1.SelectionRange.Start.ToShortDateString();
+            
+        }
+
+        private void btn_bestallInfo_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

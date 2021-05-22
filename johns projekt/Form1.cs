@@ -29,10 +29,11 @@ namespace johns_projekt
         {
             inloggad = inlogg;
             lbl_kontoNamn.Text = $"{inloggad.Fornamn} ({inloggad.Roll})";
-            Button[] knappar = { btn_radera, btn_uppdatera, btn_laggTill};
+            Button[] knappar = { btn_radera, btn_uppdatera};
             if (inloggad.Roll == "Kund")
             {
                 btn_hamtaSpel.Text = "Beställ";
+                btn_laggTill.Text = "Se mina fakturor";
                 foreach(Button knapp in knappar)
                 {
                     knapp.Visible = false;
@@ -41,7 +42,8 @@ namespace johns_projekt
             }
             else if (inloggad.Roll == "Personal")
             {
-                btn_hamtaSpel.Text = "Se beställningar";
+                btn_hamtaSpel.Text = "Se alla beställningar";
+                btn_laggTill.Text = "Lägg till nytt spel";
             }
         }
 
@@ -91,13 +93,18 @@ namespace johns_projekt
             if (btn_hamtaSpel.Text == "Beställ")
             {
                 var newForm = new frm_bestall();
-                newForm.hamtaProduktInfo(aktuelltSpel);
+                newForm.hamtaOrderInfo(aktuelltSpel, inloggad);
                 newForm.Show();
             }
             else if(btn_hamtaSpel.Text == "Ladda ner")
             {
                 var newForm = new frm_laddaNer();
-                newForm.hamtaSpel(aktuelltSpel);
+                newForm.hamtaInfo(aktuelltSpel, inloggad);
+                newForm.Show();
+            }
+            else if(btn_hamtaSpel.Text == "Se alla beställningar")
+            {
+                var newForm = new frm_bestallningar();
                 newForm.Show();
             }
 
@@ -150,19 +157,27 @@ namespace johns_projekt
 
         private void btn_laggTill_Click(object sender, EventArgs e)
         {
-            var newForm = new frm_adderaUppd();
-            //För över alla spel till beställ-fönstret
-            newForm.hamtaLista(MinaSpel);
-
-            //När man trycker på OK i adderaUppd-fönstret händer detta
-            if (DialogResult.OK == newForm.ShowDialog())
+            if (btn_laggTill.Text == "Lägg till nytt spel")
             {
-                //Uppdaterar listan med spel
-                MinaSpel.Clear();
-                LäsInAllaSpel(MinaSpel);
-                dgv_spel.DataSource = null;
-                dgv_spel.DataSource = MinaSpel;
+                var newForm = new frm_adderaUppd();
+                //För över alla spel till beställ-fönstret
+                newForm.hamtaLista(MinaSpel);
+
+                //När man trycker på OK i adderaUppd-fönstret händer detta
+                if (DialogResult.OK == newForm.ShowDialog())
+                {
+                    //Uppdaterar listan med spel
+                    MinaSpel.Clear();
+                    LäsInAllaSpel(MinaSpel);
+                    dgv_spel.DataSource = null;
+                    dgv_spel.DataSource = MinaSpel;
+                }
             }
+            else if(btn_laggTill.Text == "Se mina fakturor")
+            {
+
+            }
+
         }
 
         private void btn_uppdatera_Click(object sender, EventArgs e)
@@ -206,7 +221,7 @@ namespace johns_projekt
             if (aktuelltSpel is DigitaltSpel)
             {
                 var newForm = new frm_laddaNer();
-                newForm.hamtaSpel(aktuelltSpel);
+                newForm.hamtaInfo(aktuelltSpel, inloggad);
                 newForm.Show();
             }
         }
@@ -217,11 +232,11 @@ namespace johns_projekt
             {
                 Spel aktuelltSpel = (Spel)dgv_spel.CurrentRow.DataBoundItem;
                 lbl_spel.Text = aktuelltSpel.Titel;
-                if (aktuelltSpel is DigitaltSpel)
+                if (aktuelltSpel is DigitaltSpel && inloggad.Roll == "Kund")
                 {
                     btn_hamtaSpel.Text = "Ladda ner";
                 }
-                else
+                else if (aktuelltSpel is FysisktSpel && inloggad.Roll == "Kund")
                 {
                     btn_hamtaSpel.Text = "Beställ";
                 }

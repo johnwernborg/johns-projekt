@@ -16,12 +16,14 @@ namespace johns_projekt
         public frm_inlogg()
         {
             InitializeComponent();
+            //tbx_epost.Text = "john.wernborg@yahoo.se";
             tbx_epost.Text = "umestenis@hotmail.se";
             tbx_losenord.Text = "jllya_W0123";
         }
 
         private void btn_loggaIn_Click(object sender, EventArgs e)
         {
+            int id = 0;
             string fornamn = "";
             string efternamn = "";
             string epost = tbx_epost.Text;
@@ -64,11 +66,12 @@ namespace johns_projekt
             }
             else
             {
+                id = int.Parse(kolumner[0]);
                 fornamn = kolumner[1];
                 efternamn = kolumner[2];
                 roll = kolumner[5];
 
-                Konto inlogg = new Konto(fornamn, efternamn, epost, losenord, roll);
+                Konto inlogg = new Konto(id, fornamn, efternamn, epost, losenord, roll);
                 var newForm = new Form1();
                 newForm.LoggaIn(inlogg);
                 this.Hide();

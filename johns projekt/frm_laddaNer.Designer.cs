@@ -35,9 +35,6 @@ namespace johns_projekt
             this.btn_avbryt = new System.Windows.Forms.Button();
             this.dlgSparaFil = new System.Windows.Forms.SaveFileDialog();
             this.lbl_laddatNer = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tbx_address = new System.Windows.Forms.TextBox();
-            this.lbl_felAddress = new System.Windows.Forms.Label();
             this.lbl_faktura = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -53,7 +50,7 @@ namespace johns_projekt
             // 
             // btn_laddaNer
             // 
-            this.btn_laddaNer.Location = new System.Drawing.Point(16, 117);
+            this.btn_laddaNer.Location = new System.Drawing.Point(16, 62);
             this.btn_laddaNer.Name = "btn_laddaNer";
             this.btn_laddaNer.Size = new System.Drawing.Size(75, 23);
             this.btn_laddaNer.TabIndex = 16;
@@ -63,7 +60,7 @@ namespace johns_projekt
             // 
             // btn_ok
             // 
-            this.btn_ok.Location = new System.Drawing.Point(12, 173);
+            this.btn_ok.Location = new System.Drawing.Point(12, 120);
             this.btn_ok.Name = "btn_ok";
             this.btn_ok.Size = new System.Drawing.Size(75, 23);
             this.btn_ok.TabIndex = 18;
@@ -73,7 +70,7 @@ namespace johns_projekt
             // 
             // btn_avbryt
             // 
-            this.btn_avbryt.Location = new System.Drawing.Point(93, 173);
+            this.btn_avbryt.Location = new System.Drawing.Point(93, 120);
             this.btn_avbryt.Name = "btn_avbryt";
             this.btn_avbryt.Size = new System.Drawing.Size(75, 23);
             this.btn_avbryt.TabIndex = 17;
@@ -83,58 +80,28 @@ namespace johns_projekt
             // lbl_laddatNer
             // 
             this.lbl_laddatNer.AutoSize = true;
-            this.lbl_laddatNer.Location = new System.Drawing.Point(17, 143);
+            this.lbl_laddatNer.Location = new System.Drawing.Point(13, 88);
             this.lbl_laddatNer.Name = "lbl_laddatNer";
             this.lbl_laddatNer.Size = new System.Drawing.Size(127, 13);
             this.lbl_laddatNer.TabIndex = 19;
             this.lbl_laddatNer.Text = "Nedladdningen lyckades!";
             this.lbl_laddatNer.Visible = false;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 71);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 13);
-            this.label1.TabIndex = 21;
-            this.label1.Text = "Address";
-            // 
-            // tbx_address
-            // 
-            this.tbx_address.Location = new System.Drawing.Point(68, 68);
-            this.tbx_address.Name = "tbx_address";
-            this.tbx_address.Size = new System.Drawing.Size(100, 20);
-            this.tbx_address.TabIndex = 20;
-            // 
-            // lbl_felAddress
-            // 
-            this.lbl_felAddress.AutoSize = true;
-            this.lbl_felAddress.Location = new System.Drawing.Point(65, 91);
-            this.lbl_felAddress.Name = "lbl_felAddress";
-            this.lbl_felAddress.Size = new System.Drawing.Size(142, 13);
-            this.lbl_felAddress.TabIndex = 22;
-            this.lbl_felAddress.Text = "Måste ange en giltig address";
-            this.lbl_felAddress.Visible = false;
-            // 
             // lbl_faktura
             // 
             this.lbl_faktura.AutoSize = true;
-            this.lbl_faktura.Location = new System.Drawing.Point(17, 38);
+            this.lbl_faktura.Location = new System.Drawing.Point(13, 33);
             this.lbl_faktura.Name = "lbl_faktura";
-            this.lbl_faktura.Size = new System.Drawing.Size(146, 13);
+            this.lbl_faktura.Size = new System.Drawing.Size(251, 13);
             this.lbl_faktura.TabIndex = 23;
-            this.lbl_faktura.Text = "Faktura skickas till addressen";
-            this.lbl_faktura.Visible = false;
+            this.lbl_faktura.Text = "Efter nedladdningen skickas en faktura till ditt konto";
             // 
             // frm_laddaNer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(218, 209);
+            this.ClientSize = new System.Drawing.Size(271, 152);
             this.Controls.Add(this.lbl_faktura);
-            this.Controls.Add(this.lbl_felAddress);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.tbx_address);
             this.Controls.Add(this.lbl_laddatNer);
             this.Controls.Add(this.btn_ok);
             this.Controls.Add(this.btn_avbryt);
@@ -154,9 +121,6 @@ namespace johns_projekt
         private System.Windows.Forms.Button btn_avbryt;
         private System.Windows.Forms.SaveFileDialog dlgSparaFil;
         private System.Windows.Forms.Label lbl_laddatNer;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox tbx_address;
-        private System.Windows.Forms.Label lbl_felAddress;
         private System.Windows.Forms.Label lbl_faktura;
     }
 }
