@@ -47,6 +47,12 @@ namespace johns_projekt
             this.lbl_pris = new System.Windows.Forms.Label();
             this.btn_sok = new System.Windows.Forms.Button();
             this.dgv_spel = new System.Windows.Forms.DataGridView();
+            this.btn_radera = new System.Windows.Forms.Button();
+            this.btn_uppdatera = new System.Windows.Forms.Button();
+            this.btn_laggTill = new System.Windows.Forms.Button();
+            this.lbl_ejHitta = new System.Windows.Forms.Label();
+            this.btn_visaKonto = new System.Windows.Forms.Button();
+            this.lbl_kontoNamn = new System.Windows.Forms.Label();
             this.genreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.titelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.prisDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,10 +60,6 @@ namespace johns_projekt
             this.plattformDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.utgivningDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.spelBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.btn_radera = new System.Windows.Forms.Button();
-            this.btn_uppdatera = new System.Windows.Forms.Button();
-            this.btn_laggTill = new System.Windows.Forms.Button();
-            this.lbl_ejHitta = new System.Windows.Forms.Label();
             this.fysisktSpelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_spel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spelBindingSource)).BeginInit();
@@ -107,9 +109,9 @@ namespace johns_projekt
             this.lbl_spelbutik.Font = new System.Drawing.Font("Stencil", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_spelbutik.Location = new System.Drawing.Point(6, 9);
             this.lbl_spelbutik.Name = "lbl_spelbutik";
-            this.lbl_spelbutik.Size = new System.Drawing.Size(221, 44);
+            this.lbl_spelbutik.Size = new System.Drawing.Size(268, 44);
             this.lbl_spelbutik.TabIndex = 8;
-            this.lbl_spelbutik.Text = "Spelbutik";
+            this.lbl_spelbutik.Text = "Spelbutiken";
             // 
             // rb_retro
             // 
@@ -229,6 +231,8 @@ namespace johns_projekt
             // 
             // dgv_spel
             // 
+            this.dgv_spel.AllowUserToAddRows = false;
+            this.dgv_spel.AllowUserToDeleteRows = false;
             this.dgv_spel.AutoGenerateColumns = false;
             this.dgv_spel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_spel.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -241,56 +245,11 @@ namespace johns_projekt
             this.dgv_spel.DataSource = this.spelBindingSource;
             this.dgv_spel.Location = new System.Drawing.Point(12, 143);
             this.dgv_spel.Name = "dgv_spel";
+            this.dgv_spel.ReadOnly = true;
             this.dgv_spel.Size = new System.Drawing.Size(422, 236);
             this.dgv_spel.TabIndex = 20;
             this.dgv_spel.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dgv_spel.CurrentCellChanged += new System.EventHandler(this.dgv_spel_CurrentCellChanged);
-            // 
-            // genreDataGridViewTextBoxColumn
-            // 
-            this.genreDataGridViewTextBoxColumn.DataPropertyName = "Genre";
-            this.genreDataGridViewTextBoxColumn.HeaderText = "Genre";
-            this.genreDataGridViewTextBoxColumn.Name = "genreDataGridViewTextBoxColumn";
-            this.genreDataGridViewTextBoxColumn.Width = 50;
-            // 
-            // titelDataGridViewTextBoxColumn
-            // 
-            this.titelDataGridViewTextBoxColumn.DataPropertyName = "Titel";
-            this.titelDataGridViewTextBoxColumn.HeaderText = "Titel";
-            this.titelDataGridViewTextBoxColumn.Name = "titelDataGridViewTextBoxColumn";
-            // 
-            // prisDataGridViewTextBoxColumn
-            // 
-            this.prisDataGridViewTextBoxColumn.DataPropertyName = "Pris";
-            this.prisDataGridViewTextBoxColumn.HeaderText = "Pris";
-            this.prisDataGridViewTextBoxColumn.Name = "prisDataGridViewTextBoxColumn";
-            this.prisDataGridViewTextBoxColumn.Width = 30;
-            // 
-            // aldersgransDataGridViewTextBoxColumn
-            // 
-            this.aldersgransDataGridViewTextBoxColumn.DataPropertyName = "Aldersgrans";
-            this.aldersgransDataGridViewTextBoxColumn.HeaderText = "Aldersgrans";
-            this.aldersgransDataGridViewTextBoxColumn.Name = "aldersgransDataGridViewTextBoxColumn";
-            this.aldersgransDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // plattformDataGridViewTextBoxColumn
-            // 
-            this.plattformDataGridViewTextBoxColumn.DataPropertyName = "Plattform";
-            this.plattformDataGridViewTextBoxColumn.HeaderText = "Plattform";
-            this.plattformDataGridViewTextBoxColumn.Name = "plattformDataGridViewTextBoxColumn";
-            this.plattformDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // utgivningDataGridViewTextBoxColumn
-            // 
-            this.utgivningDataGridViewTextBoxColumn.DataPropertyName = "Utgivning";
-            this.utgivningDataGridViewTextBoxColumn.HeaderText = "Utgivning";
-            this.utgivningDataGridViewTextBoxColumn.Name = "utgivningDataGridViewTextBoxColumn";
-            this.utgivningDataGridViewTextBoxColumn.Width = 60;
-            // 
-            // spelBindingSource
-            // 
-            this.spelBindingSource.DataSource = typeof(johns_projekt.Spel);
-            this.spelBindingSource.CurrentChanged += new System.EventHandler(this.spelBindingSource_CurrentChanged);
             // 
             // btn_radera
             // 
@@ -332,6 +291,76 @@ namespace johns_projekt
             this.lbl_ejHitta.Text = "Kunde inte hitta spelet";
             this.lbl_ejHitta.Visible = false;
             // 
+            // btn_visaKonto
+            // 
+            this.btn_visaKonto.Location = new System.Drawing.Point(591, 30);
+            this.btn_visaKonto.Name = "btn_visaKonto";
+            this.btn_visaKonto.Size = new System.Drawing.Size(83, 23);
+            this.btn_visaKonto.TabIndex = 26;
+            this.btn_visaKonto.Text = "Visa konto";
+            this.btn_visaKonto.UseVisualStyleBackColor = true;
+            // 
+            // lbl_kontoNamn
+            // 
+            this.lbl_kontoNamn.AutoSize = true;
+            this.lbl_kontoNamn.Location = new System.Drawing.Point(533, 14);
+            this.lbl_kontoNamn.Name = "lbl_kontoNamn";
+            this.lbl_kontoNamn.Size = new System.Drawing.Size(141, 13);
+            this.lbl_kontoNamn.TabIndex = 27;
+            this.lbl_kontoNamn.Text = "KontoNamn (kund/personal)";
+            // 
+            // genreDataGridViewTextBoxColumn
+            // 
+            this.genreDataGridViewTextBoxColumn.DataPropertyName = "Genre";
+            this.genreDataGridViewTextBoxColumn.HeaderText = "Genre";
+            this.genreDataGridViewTextBoxColumn.Name = "genreDataGridViewTextBoxColumn";
+            this.genreDataGridViewTextBoxColumn.ReadOnly = true;
+            this.genreDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // titelDataGridViewTextBoxColumn
+            // 
+            this.titelDataGridViewTextBoxColumn.DataPropertyName = "Titel";
+            this.titelDataGridViewTextBoxColumn.HeaderText = "Titel";
+            this.titelDataGridViewTextBoxColumn.Name = "titelDataGridViewTextBoxColumn";
+            this.titelDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // prisDataGridViewTextBoxColumn
+            // 
+            this.prisDataGridViewTextBoxColumn.DataPropertyName = "Pris";
+            this.prisDataGridViewTextBoxColumn.HeaderText = "Pris";
+            this.prisDataGridViewTextBoxColumn.Name = "prisDataGridViewTextBoxColumn";
+            this.prisDataGridViewTextBoxColumn.ReadOnly = true;
+            this.prisDataGridViewTextBoxColumn.Width = 30;
+            // 
+            // aldersgransDataGridViewTextBoxColumn
+            // 
+            this.aldersgransDataGridViewTextBoxColumn.DataPropertyName = "Aldersgrans";
+            this.aldersgransDataGridViewTextBoxColumn.HeaderText = "Aldersgrans";
+            this.aldersgransDataGridViewTextBoxColumn.Name = "aldersgransDataGridViewTextBoxColumn";
+            this.aldersgransDataGridViewTextBoxColumn.ReadOnly = true;
+            this.aldersgransDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // plattformDataGridViewTextBoxColumn
+            // 
+            this.plattformDataGridViewTextBoxColumn.DataPropertyName = "Plattform";
+            this.plattformDataGridViewTextBoxColumn.HeaderText = "Plattform";
+            this.plattformDataGridViewTextBoxColumn.Name = "plattformDataGridViewTextBoxColumn";
+            this.plattformDataGridViewTextBoxColumn.ReadOnly = true;
+            this.plattformDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // utgivningDataGridViewTextBoxColumn
+            // 
+            this.utgivningDataGridViewTextBoxColumn.DataPropertyName = "Utgivning";
+            this.utgivningDataGridViewTextBoxColumn.HeaderText = "Utgivning";
+            this.utgivningDataGridViewTextBoxColumn.Name = "utgivningDataGridViewTextBoxColumn";
+            this.utgivningDataGridViewTextBoxColumn.ReadOnly = true;
+            this.utgivningDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // spelBindingSource
+            // 
+            this.spelBindingSource.DataSource = typeof(johns_projekt.Spel);
+            this.spelBindingSource.CurrentChanged += new System.EventHandler(this.spelBindingSource_CurrentChanged);
+            // 
             // fysisktSpelBindingSource
             // 
             this.fysisktSpelBindingSource.DataSource = typeof(johns_projekt.FysisktSpel);
@@ -340,7 +369,9 @@ namespace johns_projekt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(621, 392);
+            this.ClientSize = new System.Drawing.Size(686, 392);
+            this.Controls.Add(this.lbl_kontoNamn);
+            this.Controls.Add(this.btn_visaKonto);
             this.Controls.Add(this.lbl_ejHitta);
             this.Controls.Add(this.btn_laggTill);
             this.Controls.Add(this.btn_uppdatera);
@@ -389,7 +420,6 @@ namespace johns_projekt
         private System.Windows.Forms.Label lbl_utgivning;
         private System.Windows.Forms.Label lbl_pris;
         private System.Windows.Forms.Button btn_sok;
-        private System.Windows.Forms.DataGridView dgv_spel;
         private System.Windows.Forms.BindingSource spelBindingSource;
         private System.Windows.Forms.BindingSource fysisktSpelBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn genreDataGridViewTextBoxColumn;
@@ -402,6 +432,9 @@ namespace johns_projekt
         private System.Windows.Forms.Button btn_uppdatera;
         private System.Windows.Forms.Button btn_laggTill;
         private System.Windows.Forms.Label lbl_ejHitta;
+        private System.Windows.Forms.Button btn_visaKonto;
+        private System.Windows.Forms.Label lbl_kontoNamn;
+        internal System.Windows.Forms.DataGridView dgv_spel;
     }
 }
 

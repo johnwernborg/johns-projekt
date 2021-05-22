@@ -16,47 +16,18 @@ namespace johns_projekt
         List<Spel> MinaSpel = new List<Spel>();
         List<Spel> EttSpel = new List<Spel>();
 
-        int aktuellIndex = 0;
         public Form1()
         {
             InitializeComponent();
 
             LäsInAllaSpel(MinaSpel);
-
-            //MinaSpel.Add(new DigitaltSpel("The Last Crusade Action Game", "Äventyr", 7, "PC", true, 99, 1989, 1, 0.25));
-            //MinaSpel.Add(new DigitaltSpel("Super Mario 64", "Plattform", 3, "Nintendo 64", false, 399, 1996, 1, 5));
-            //MinaSpel.Add(new FysisktSpel("Fortnite", "Battle Royale", 12, "PC", true, 0, 2017, 350*10^6));
-            //MinaSpel.Add(new DigitaltSpel("The Legend of Zelda: Twilight Princess", "Äventyr", 7, "Nintendo Wii", false, 399, 2006, 1, 26));
-
-
-            //lbx_spel.DataSource = MinaSpel;
             dgv_spel.DataSource = MinaSpel;
         }
 
+
+
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ////Textboxen är lite otydlig. Kanske visa genom en datagridview istället?
-
-            ////Rensar textboxen så att ny text kan skrivas
-            //tbx_spel.Clear();
-
-            //    aktuellIndex = lbx_spel.SelectedIndex;
-            //    Spel aktuelltSpel = (Spel)lbx_spel.SelectedValue;
-
-            //    tbx_spel.AppendText(aktuelltSpel.GetShortInfo());
-
-            //    //if (aktuelltSpel.Nedladd) btn_hamtaSpel.Text = "Ladda ner";
-            //    //else btn_hamtaSpel.Text = "Beställ";
-
-
-            //    if (aktuelltSpel is DigitaltSpel)
-            //    {
-
-            //    }
-            //    else
-            //    {
-
-            //    }
         }
 
         private void btn_sort_Click(object sender, EventArgs e)
@@ -87,11 +58,6 @@ namespace johns_projekt
                 }
             }
 
-
-            //Sortera utefter vad användaren har valt
-            //lbx_spel.DataSource = null;
-            //lbx_spel.Items.Clear();
-            //lbx_spel.DataSource = MinaSpel;
             dgv_spel.DataSource = null;
             dgv_spel.DataSource = MinaSpel;
 
@@ -99,12 +65,11 @@ namespace johns_projekt
 
         private void btn_hamtaSpel_Click(object sender, EventArgs e)
         {
-            //Känner av vilket spel man vill köpa (OBS! ändra från listbox till datagridview)
+            //Känner av vilket spel man vill köpa
             Spel aktuelltSpel = (Spel)dgv_spel.CurrentRow.DataBoundItem;
             if (btn_hamtaSpel.Text == "Beställ")
             {
                 var newForm = new frm_bestall();
-                //För över produktID till beställ-fönstret
                 newForm.hamtaProduktInfo(aktuelltSpel);
                 newForm.Show();
             }
@@ -121,6 +86,7 @@ namespace johns_projekt
 
         private void btn_rensa_Click(object sender, EventArgs e)
         {
+            //Gör så att ingen knappt är itryckt
             RadioButton[] knappar = { rb_az, rb_za, rb_stigande, rb_fallande, rb_modernt, rb_retro };
 
             foreach(RadioButton knapp in knappar)
@@ -135,14 +101,10 @@ namespace johns_projekt
 
         private void spelBindingSource_CurrentChanged(object sender, EventArgs e)
         {
-
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            //Funkar bara när man trycker på ett spel, inte när man bläddrar i listan
-            Spel aktuelltSpel = (Spel)dgv_spel.CurrentRow.DataBoundItem;
-            lbl_spel.Text = aktuelltSpel.Titel;
         }
 
         private void btn_radera_Click(object sender, EventArgs e)
@@ -171,14 +133,21 @@ namespace johns_projekt
             //För över alla spel till beställ-fönstret
             newForm.hamtaLista(MinaSpel);
 
-            newForm.Show();
+            //När man trycker på OK i adderaUppd-fönstret händer detta
+            if (DialogResult.OK == newForm.ShowDialog())
+            {
+                //Uppdaterar listan med spel
+                MinaSpel.Clear();
+                LäsInAllaSpel(MinaSpel);
+                dgv_spel.DataSource = null;
+                dgv_spel.DataSource = MinaSpel;
+            }
         }
 
         private void btn_uppdatera_Click(object sender, EventArgs e)
         {
-            //OBS OBS OBS OBS OBS
-            //KOLLA PÅ DETTA NÄSTA GÅNG!!!!
             var newForm = new frm_adderaUppd();
+            //Beroende på om det är fysiskt eller digitalt spel skickas nedladdningar eller enheter
             if (dgv_spel.CurrentRow.DataBoundItem is FysisktSpel)
             {
                 FysisktSpel aktuelltFysSpel = (FysisktSpel)dgv_spel.CurrentRow.DataBoundItem;
@@ -189,10 +158,10 @@ namespace johns_projekt
                 DigitaltSpel aktuelltDigSpel = (DigitaltSpel)dgv_spel.CurrentRow.DataBoundItem;
                 newForm.hamtaSpel(aktuelltDigSpel, aktuelltDigSpel.Nedladdningar, 0);
             }
+            //När man trycker på OK i adderaUppd-fönstret händer detta
             if (DialogResult.OK == newForm.ShowDialog())
             {
-                
-
+                //Uppdaterar listan med spel
                 MinaSpel.Clear();
                 LäsInAllaSpel(MinaSpel);
                 dgv_spel.DataSource = null;
@@ -209,9 +178,10 @@ namespace johns_projekt
 
         private void btn_laddaNer_Click(object sender, EventArgs e)
         {
-            //Känner av vilket spel man vill köpa (OBS! ändra från listbox till datagridview)
+            //Känner av vilket spel man vill köpa
             Spel aktuelltSpel = (Spel)dgv_spel.CurrentRow.DataBoundItem;
-            //Ska bara gå om nedladdninsbart är true
+
+            //Går bara att ladda ner spel som är digitala
             if (aktuelltSpel is DigitaltSpel)
             {
                 var newForm = new frm_laddaNer();
@@ -261,28 +231,10 @@ namespace johns_projekt
             {
                 lbl_ejHitta.Visible = true;
             }
-
-//            string connectionString =
-//"SERVER=localhost;DATABASE=spelbutik;UID=lennart;PASSWORD=abcdef";
-//            MySqlConnection conn = new MySqlConnection(connectionString);
-//            conn.Open();
-
-//            //Söker efter alla spel
-//            string specSpel = tbx_sok.Text;
-//            string sqlsats = $"Select * From spel Where ProduktNamn = '{specSpel}'";
-//            MySqlCommand cmd = new MySqlCommand(sqlsats, conn);
-//            MySqlDataReader dataReader = cmd.ExecuteReader();
-//            MinaSpel.Clear();
-
-//            while (dataReader.Read())
-//            {
-
-//            }
         }
 
-        public void LäsInAllaSpel(List<Spel> MinaSpel)
+        public void LoggaIn()
         {
-
             //Hämtar koppling till databasen
             string connectionString =
 "SERVER=localhost;DATABASE=spelbutik;UID=lennart;PASSWORD=abcdef";
@@ -290,7 +242,21 @@ namespace johns_projekt
             conn.Open();
 
             //Söker efter alla spel
-            string sqlsats = "Select * from spel";
+            string sqlsats = "SELECT * FROM konton WHERE";
+            MySqlCommand cmd = new MySqlCommand(sqlsats, conn);
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+        }
+
+        public void LäsInAllaSpel(List<Spel> MinaSpel)
+        { 
+            //Hämtar koppling till databasen
+            string connectionString =
+"SERVER=localhost;DATABASE=spelbutik;UID=lennart;PASSWORD=abcdef";
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            conn.Open();
+
+            //Söker efter alla spel
+            string sqlsats = "SELECT * FROM spel";
             MySqlCommand cmd = new MySqlCommand(sqlsats, conn);
             MySqlDataReader dataReader = cmd.ExecuteReader();
 
@@ -312,14 +278,37 @@ namespace johns_projekt
                         kolumner.Add("NULL");
                     }
                 }
-                //Kollar ifall det är fysiskt eller digitalt, fysiskt har en kolumn med bool
-                if (kolumner[8] == 0.ToString() || kolumner[8] == "NULL")
+                //Kollar ifall det är fysiskt eller digitalt spel
+                bool fys = false;
+                bool dig = false;
+
+                //Om nedladdningar är noll kan det vara både fysiskt eller digitalt
+                if (kolumner[8] == 0.ToString())
+                {
+                    //Om enheter också är noll är det helt ett nytt digitalt spel som inte laddats ner förut
+                    if (kolumner[7] == 0.ToString())
+                    {
+                        dig = true;
+                    }
+                    //Annars är det ett fysiskt spel
+                    fys = true;
+                }
+                //Om nedladdningar inte är noll är det ett digitalt spel
+                else
+                {
+                    dig = true;
+                }
+
+                //Lägger till spelet i listan
+
+                //Lägger bara till ett fysiskt spel om det finns enheter i lagret
+                if (fys && kolumner[7] != 0.ToString())
                 {
                     FysisktSpel sp = new FysisktSpel(int.Parse(kolumner[0]), kolumner[1], kolumner[2], int.Parse(kolumner[3]),
-                             kolumner[4], int.Parse(kolumner[5]), int.Parse(kolumner[6]), int.Parse(kolumner[7]));
+                                kolumner[4], int.Parse(kolumner[5]), int.Parse(kolumner[6]), int.Parse(kolumner[7]));
                     MinaSpel.Add(sp);
                 }
-                else
+                else if(dig)
                 {
                     DigitaltSpel sp = new DigitaltSpel(int.Parse(kolumner[0]), kolumner[1], kolumner[2], int.Parse(kolumner[3]),
                                 kolumner[4], int.Parse(kolumner[5]), int.Parse(kolumner[6]), int.Parse(kolumner[8]));

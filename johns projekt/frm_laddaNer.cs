@@ -22,19 +22,19 @@ namespace johns_projekt
 
         private void btn_mapp_Click(object sender, EventArgs e)
         {
-            //Välja mapp där spelet laddas ner
-            //Funkar inte riktigt... gör på något annat sätt
-            OpenFileDialog filValjare = new OpenFileDialog();
-            filValjare.Filter = "";
-            DialogResult result = filValjare.ShowDialog();
-            if(result == DialogResult.OK)
-            {
+            ////Välja mapp där spelet laddas ner
+            ////Funkar inte riktigt... gör på något annat sätt
+            //OpenFileDialog filValjare = new OpenFileDialog();
+            //filValjare.Filter = "";
+            //DialogResult result = filValjare.ShowDialog();
+            //if(result == DialogResult.OK)
+            //{
 
-            }
-            else
-            {
+            //}
+            //else
+            //{
 
-            }
+            //}
         }
 
         private void btn_laddaNer_Click(object sender, EventArgs e)
@@ -67,6 +67,7 @@ namespace johns_projekt
             string produktTitel = laddaNerSpel.Titel;
             int produktPris = laddaNerSpel.Pris;
             string address = tbx_address.Text;
+            DateTime betalDatum = DateTime.Now.AddDays(30);
             bool siffra = false;
             bool bokstav = false;
             //Kollar så att addressen är ok
@@ -87,13 +88,27 @@ namespace johns_projekt
                 conn.Open();
 
                 //Skickar kundinfo till kunder
-                string sqlsats = $"Insert Into kunder(KundID, KontaktNamn, Address, Telefon) Values (1, 'NEDLADDAT', '{address}', 'NEDLADDAT')";
+                string sqlsats = $"INSERT INTO kunder( KontaktNamn, Address, Telefon) VALUES ( 'NEDLADDAT', '{address}', 'NEDLADDAT')";
                 MySqlCommand cmd = new MySqlCommand(sqlsats, conn);
                 MySqlDataReader dataReader = cmd.ExecuteReader();
                 conn.Close();
 
+                //Skickar faktura till fakturor
+                conn.Open();
+                sqlsats = $"INSERT INTO fakturor(Address, Pris, Datum) VALUES ('{address}', {produktPris}, {betalDatum})";
+                MySqlCommand cmd2 = new MySqlCommand(sqlsats, conn);
+                MySqlDataReader dataReader2 = cmd2.ExecuteReader();
+                conn.Close();
 
-                
+                //Lägger till en nedladdning till spelet
+                conn.Open();
+                sqlsats = $"UPDATE spel SET Nedladdningar = Nedladdningar + 1 WHERE ProduktID = {produktId}";
+                MySqlCommand cmd3 = new MySqlCommand(sqlsats, conn);
+                MySqlDataReader dataReader3 = cmd3.ExecuteReader();
+                conn.Close();
+
+
+
 
                 lbl_laddatNer.Visible = true;
             }

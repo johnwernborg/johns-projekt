@@ -110,13 +110,32 @@
     <Compile Include="frm_bestall.Designer.cs">
       <DependentUpon>frm_bestall.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_inlogg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_inlogg.Designer.cs">
+      <DependentUpon>frm_inlogg.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_laddaNer.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_laddaNer.Designer.cs">
       <DependentUpon>frm_laddaNer.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_skapaKonto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_skapaKonto.Designer.cs">
+      <DependentUpon>frm_skapaKonto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_valkommen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_valkommen.Designer.cs">
+      <DependentUpon>frm_valkommen.cs</DependentUpon>
+    </Compile>
     <Compile Include="FysisktSpel.cs" />
+    <Compile Include="Konto.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DigitaltSpel.cs" />
@@ -130,8 +149,17 @@
     <EmbeddedResource Include="frm_bestall.resx">
       <DependentUpon>frm_bestall.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_inlogg.resx">
+      <DependentUpon>frm_inlogg.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_laddaNer.resx">
       <DependentUpon>frm_laddaNer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_skapaKonto.resx">
+      <DependentUpon>frm_skapaKonto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_valkommen.resx">
+      <DependentUpon>frm_valkommen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

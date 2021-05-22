@@ -120,8 +120,8 @@ namespace johns_projekt
                 conn.Open();
 
                 //Skickar det nya spelet till databasen
-                string sqlsats = $"Insert Into spel(ProduktID, ProduktNamn, ProduktGenre, Aldersgrans, Plattform, " +
-                    $"EnhetPris, UtgivningsAr, EnheterILager, Nedladdningar) Values ({id}, '{titel}', '{genre}', {aldersgrans}, " +
+                string sqlsats = $"INSERT INTO spel(ProduktID, ProduktNamn, ProduktGenre, Aldersgrans, Plattform, " +
+                    $"EnhetPris, UtgivningsAr, EnheterILager, Nedladdningar) VALUES ({id}, '{titel}', '{genre}', {aldersgrans}, " +
                     $"'{plattform}', {pris}, {utgivning}, {enheter}, {nedladdningar})";
                 MySqlCommand cmd = new MySqlCommand(sqlsats, conn);
                 MySqlDataReader dataReader = cmd.ExecuteReader();
@@ -145,13 +145,13 @@ namespace johns_projekt
         {
             var newForm = new Form1();
             newForm.hamtaNyttSpel(nyttSpel);
-            //frm_adderaUppd.ActiveForm.Close();
             this.DialogResult = DialogResult.OK;
+            this.Close();
         }
 
         private void btn_avbryt_Click(object sender, EventArgs e)
         {
-            //Kanske rensa alla textboxer?
+            this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
     }

@@ -114,17 +114,24 @@ namespace johns_projekt
                 conn.Open();
 
                 //Skickar kundinfo till kunder
-                string sqlsats = $"Insert Into kunder(KundID, KontaktNamn, Address, Telefon) Values (1, '{kontaktnamn}', '{address}', '{telefon}')";
+                string sqlsats = $"INSERT INTO kunder(KundID, KontaktNamn, Address, Telefon) VALUES (1, '{kontaktnamn}', '{address}', '{telefon}')";
                 MySqlCommand cmd = new MySqlCommand(sqlsats, conn);
                 MySqlDataReader dataReader = cmd.ExecuteReader();
                 conn.Close();
 
                 //Skickar orderinfo till orders
                 conn.Open();
-                sqlsats = $"Insert Into orders(ProduktID, KundID, OrderPris, Frakt, Datum) Values ({produktId}, 1, {antal} * {produktPris}, 20, '{datum}')";
+                sqlsats = $"INSERT INTO orders(ProduktID, KundID, OrderPris, Frakt, Datum) VALUES ({produktId}, 1, {antal} * {produktPris}, 20, '{datum}')";
                 MySqlCommand cmd2 = new MySqlCommand(sqlsats, conn);
                 MySqlDataReader dataReader2 = cmd2.ExecuteReader();
                 lbl_bestallInfo.Text = "Din beställning har skickats!";
+                conn.Close();
+
+                //Tar bort X enheter från spelet i lagret
+                conn.Open();
+                sqlsats = $"UPDATE spel SET EnheterILager = EnheterILager - {antal} WHERE ProduktID = {produktId}";
+                MySqlCommand cmd3 = new MySqlCommand(sqlsats, conn);
+                MySqlDataReader dataReader3 = cmd3.ExecuteReader();
                 conn.Close();
             }
             else
@@ -132,9 +139,6 @@ namespace johns_projekt
                 lbl_bestallInfo.Text = "Dina uppgifter var ej giltiga. Försök igen.";
 
             }
-
-
-
         }
 
         private void btn_avbryt_Click(object sender, EventArgs e)
