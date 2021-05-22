@@ -124,6 +124,7 @@ namespace johns_projekt
             this.Controls.Add(this.lbl_valkommen);
             this.Name = "frm_valkommen";
             this.Text = "frm_valkommen";
+            this.Load += new System.EventHandler(this.frm_valkommen_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

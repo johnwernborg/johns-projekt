@@ -15,6 +15,7 @@ namespace johns_projekt
     {
         List<Spel> MinaSpel = new List<Spel>();
         List<Spel> EttSpel = new List<Spel>();
+        Konto inloggad = new Konto();
 
         public Form1()
         {
@@ -22,6 +23,26 @@ namespace johns_projekt
 
             LäsInAllaSpel(MinaSpel);
             dgv_spel.DataSource = MinaSpel;
+        }
+
+        public void LoggaIn(Konto inlogg)
+        {
+            inloggad = inlogg;
+            lbl_kontoNamn.Text = $"{inloggad.Fornamn} ({inloggad.Roll})";
+            Button[] knappar = { btn_radera, btn_uppdatera, btn_laggTill};
+            if (inloggad.Roll == "Kund")
+            {
+                btn_hamtaSpel.Text = "Beställ";
+                foreach(Button knapp in knappar)
+                {
+                    knapp.Visible = false;
+                    knapp.Enabled = false;
+                }
+            }
+            else if (inloggad.Roll == "Personal")
+            {
+                btn_hamtaSpel.Text = "Se beställningar";
+            }
         }
 
 
@@ -231,20 +252,6 @@ namespace johns_projekt
             {
                 lbl_ejHitta.Visible = true;
             }
-        }
-
-        public void LoggaIn()
-        {
-            //Hämtar koppling till databasen
-            string connectionString =
-"SERVER=localhost;DATABASE=spelbutik;UID=lennart;PASSWORD=abcdef";
-            MySqlConnection conn = new MySqlConnection(connectionString);
-            conn.Open();
-
-            //Söker efter alla spel
-            string sqlsats = "SELECT * FROM konton WHERE";
-            MySqlCommand cmd = new MySqlCommand(sqlsats, conn);
-            MySqlDataReader dataReader = cmd.ExecuteReader();
         }
 
         public void LäsInAllaSpel(List<Spel> MinaSpel)

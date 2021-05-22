@@ -50,25 +50,6 @@ namespace johns_projekt
             return string.Compare(this.titel, other.titel);
         }
 
-        public int PriceUpCompareTo(Spel other)
-        {
-            return this.pris - other.pris;
-        }
-
-        //public int PriceDownCompareTo(Spel other)
-        //{
-        //    return other.pris - this.pris;
-        //}
-
-        //public int TitleAZCompareTo(Spel other)
-        //{
-        //    return string.Compare(this.titel, other.titel);
-        //}
-        //public int TitleZACompareTo(Spel other)
-        //{
-        //    return string.Compare(other.titel, this.titel);
-        //}
-
         public string Genre { get => genre; set => genre = value; }
         public int Aldersgrans { get => aldersgrans; set => aldersgrans = value; }
         public string Plattform { get => plattform; set => plattform = value; }

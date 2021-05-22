@@ -41,7 +41,7 @@ namespace johns_projekt
             // 
             // tbx_losenord
             // 
-            this.tbx_losenord.Location = new System.Drawing.Point(17, 97);
+            this.tbx_losenord.Location = new System.Drawing.Point(17, 101);
             this.tbx_losenord.Name = "tbx_losenord";
             this.tbx_losenord.Size = new System.Drawing.Size(137, 20);
             this.tbx_losenord.TabIndex = 3;

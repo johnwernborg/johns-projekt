@@ -35,12 +35,17 @@ namespace johns_projekt
 
             if (DialogResult.OK == newForm.ShowDialog())
             {
-                var newForm2 = new Form1();
-                this.Hide();
-                newForm2.Show();
+                //var newForm2 = new Form1();
+                //this.Hide();
+                //newForm2.Show();
                 
 
             }
+        }
+
+        private void frm_valkommen_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

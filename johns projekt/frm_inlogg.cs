@@ -16,7 +16,7 @@ namespace johns_projekt
         public frm_inlogg()
         {
             InitializeComponent();
-            tbx_epost.Text = "john.wernborg@yahoo.se";
+            tbx_epost.Text = "umestenis@hotmail.se";
             tbx_losenord.Text = "jllya_W0123";
         }
 
@@ -68,9 +68,13 @@ namespace johns_projekt
                 efternamn = kolumner[2];
                 roll = kolumner[5];
 
-                this.DialogResult = DialogResult.OK;
+                Konto inlogg = new Konto(fornamn, efternamn, epost, losenord, roll);
+                var newForm = new Form1();
+                newForm.LoggaIn(inlogg);
+                this.Hide();
+                newForm.Show();
 
-                this.Close();
+
             }
         }
 
