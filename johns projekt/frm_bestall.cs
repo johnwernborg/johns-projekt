@@ -22,7 +22,9 @@ namespace johns_projekt
         {
             InitializeComponent();
 
-            DateTime minDag = DateTime.Now.AddDays(4);
+            //Den snabbaste dagen spelbutiken kan leverera är inom tre dagar
+            DateTime minDag = DateTime.Now.AddDays(3);
+            //Om dagen är en helgdag kommer den bli nästa måndag
             while(minDag.DayOfWeek.ToString() == "Saturday" || minDag.DayOfWeek.ToString() == "Sunday")
             {
                 minDag = minDag.AddDays(1);
@@ -31,8 +33,6 @@ namespace johns_projekt
 
             nud_antal.Value = 1;
             nud_antal.Minimum = 1;
-
-            tbx_address.Text = "Linnégatan 29";
         }
 
         private void frm_bestall_Load(object sender, EventArgs e)
@@ -62,20 +62,12 @@ namespace johns_projekt
             string datumText = monthCalendar1.SelectionRange.Start.ToShortDateString();
             DateTime datum = DateTime.ParseExact(datumText, "yyyy-MM-dd", provider);
             DateTime betalDatum = DateTime.Now.AddDays(30);
-
-            bool adrSiffra = false;
-            bool adrBokstav = false;
+            
+            
 
             //Kollar så att address är ok
-            foreach (char t in address)
-            {
-                int tecken = t;
-                if (tecken > 47 && tecken < 58) adrSiffra = true;
-                if ((tecken > 64 && tecken < 90) || (tecken > 96 && tecken < 123)) adrBokstav = true;
-                if (adrSiffra && adrBokstav) break;
-            }
 
-            if (adrBokstav && adrBokstav)
+            if (kundBestallt.KontrollAddress(address))
             {
                 //Hämtar koppling till databasen
                 string connectionString =
@@ -109,7 +101,6 @@ namespace johns_projekt
             else
             {
                 lbl_bestallInfo.Text = "Dina uppgifter var ej giltiga. Försök igen.";
-
             }
         }
 
@@ -117,7 +108,6 @@ namespace johns_projekt
         {
             //Går tillbaka till grundfönstret
             this.Close();
-            //Rensa textboxer eller inte???
         }
 
         public void hamtaOrderInfo(Spel valtSpel, Konto kund)

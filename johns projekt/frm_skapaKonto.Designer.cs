@@ -38,7 +38,6 @@ namespace johns_projekt
             this.lbl_efternamn = new System.Windows.Forms.Label();
             this.tbx_fornamn = new System.Windows.Forms.TextBox();
             this.lbl_fornamn = new System.Windows.Forms.Label();
-            this.btn_visa = new System.Windows.Forms.Button();
             this.rb_kund = new System.Windows.Forms.RadioButton();
             this.rb_personal = new System.Windows.Forms.RadioButton();
             this.lbl_skapaKonto = new System.Windows.Forms.Label();
@@ -60,6 +59,7 @@ namespace johns_projekt
             // 
             this.tbx_losenord.Location = new System.Drawing.Point(17, 196);
             this.tbx_losenord.Name = "tbx_losenord";
+            this.tbx_losenord.PasswordChar = '*';
             this.tbx_losenord.Size = new System.Drawing.Size(137, 20);
             this.tbx_losenord.TabIndex = 8;
             // 
@@ -119,15 +119,6 @@ namespace johns_projekt
             this.lbl_fornamn.Size = new System.Drawing.Size(48, 13);
             this.lbl_fornamn.TabIndex = 14;
             this.lbl_fornamn.Text = "Förnamn";
-            // 
-            // btn_visa
-            // 
-            this.btn_visa.Location = new System.Drawing.Point(160, 196);
-            this.btn_visa.Name = "btn_visa";
-            this.btn_visa.Size = new System.Drawing.Size(43, 21);
-            this.btn_visa.TabIndex = 16;
-            this.btn_visa.Text = "Visa";
-            this.btn_visa.UseVisualStyleBackColor = true;
             // 
             // rb_kund
             // 
@@ -191,7 +182,6 @@ namespace johns_projekt
             this.Controls.Add(this.lbl_skapaKonto);
             this.Controls.Add(this.rb_personal);
             this.Controls.Add(this.rb_kund);
-            this.Controls.Add(this.btn_visa);
             this.Controls.Add(this.tbx_fornamn);
             this.Controls.Add(this.lbl_fornamn);
             this.Controls.Add(this.tbx_efternamn);
@@ -219,7 +209,6 @@ namespace johns_projekt
         private System.Windows.Forms.Label lbl_efternamn;
         private System.Windows.Forms.TextBox tbx_fornamn;
         private System.Windows.Forms.Label lbl_fornamn;
-        private System.Windows.Forms.Button btn_visa;
         private System.Windows.Forms.RadioButton rb_kund;
         private System.Windows.Forms.RadioButton rb_personal;
         private System.Windows.Forms.Label lbl_skapaKonto;

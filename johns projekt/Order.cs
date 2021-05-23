@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace johns_projekt
 {
-    public class Order
+    public class Order : IControlTextbox
     {
         int id;
         int produktid;
@@ -33,5 +33,29 @@ namespace johns_projekt
         public DateTime Datum { get => datum; set => datum = value; }
         public int Produktid { get => produktid; set => produktid = value; }
         public int Id { get => id; set => id = value; }
+
+        public bool KontrollAddress(string address)
+        {
+            bool adrSiffra = false;
+            bool adrBokstav = false;
+            bool ok = false;
+            foreach (char t in address)
+            {
+                int tecken = t;
+                if (tecken > 47 && tecken < 58) adrSiffra = true;
+                if ((tecken > 64 && tecken < 90) || (tecken > 96 && tecken < 123)) adrBokstav = true;
+                if (adrSiffra && adrBokstav)
+                {
+                    ok = true;
+                    break;
+                }
+            }
+            return ok;
+        }
+
+        public bool KontrollEpost(string epost)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -45,7 +45,7 @@ namespace johns_projekt
             // 
             // monthCalendar1
             // 
-            this.monthCalendar1.Location = new System.Drawing.Point(18, 101);
+            this.monthCalendar1.Location = new System.Drawing.Point(18, 82);
             this.monthCalendar1.MaxSelectionCount = 1;
             this.monthCalendar1.MinDate = new System.DateTime(2021, 4, 15, 0, 0, 0, 0);
             this.monthCalendar1.Name = "monthCalendar1";
@@ -55,7 +55,7 @@ namespace johns_projekt
             // 
             // tbx_address
             // 
-            this.tbx_address.Location = new System.Drawing.Point(328, 164);
+            this.tbx_address.Location = new System.Drawing.Point(328, 145);
             this.tbx_address.Name = "tbx_address";
             this.tbx_address.Size = new System.Drawing.Size(100, 20);
             this.tbx_address.TabIndex = 1;
@@ -63,7 +63,7 @@ namespace johns_projekt
             // lbl_address
             // 
             this.lbl_address.AutoSize = true;
-            this.lbl_address.Location = new System.Drawing.Point(277, 167);
+            this.lbl_address.Location = new System.Drawing.Point(277, 148);
             this.lbl_address.Name = "lbl_address";
             this.lbl_address.Size = new System.Drawing.Size(45, 13);
             this.lbl_address.TabIndex = 5;
@@ -71,7 +71,7 @@ namespace johns_projekt
             // 
             // btn_bestall
             // 
-            this.btn_bestall.Location = new System.Drawing.Point(328, 211);
+            this.btn_bestall.Location = new System.Drawing.Point(328, 192);
             this.btn_bestall.Name = "btn_bestall";
             this.btn_bestall.Size = new System.Drawing.Size(75, 23);
             this.btn_bestall.TabIndex = 8;
@@ -81,7 +81,7 @@ namespace johns_projekt
             // 
             // btn_avbryt
             // 
-            this.btn_avbryt.Location = new System.Drawing.Point(365, 282);
+            this.btn_avbryt.Location = new System.Drawing.Point(365, 263);
             this.btn_avbryt.Name = "btn_avbryt";
             this.btn_avbryt.Size = new System.Drawing.Size(75, 23);
             this.btn_avbryt.TabIndex = 9;
@@ -91,7 +91,7 @@ namespace johns_projekt
             // 
             // btn_ok
             // 
-            this.btn_ok.Location = new System.Drawing.Point(284, 282);
+            this.btn_ok.Location = new System.Drawing.Point(284, 263);
             this.btn_ok.Name = "btn_ok";
             this.btn_ok.Size = new System.Drawing.Size(75, 23);
             this.btn_ok.TabIndex = 10;
@@ -102,7 +102,7 @@ namespace johns_projekt
             // lbl_bestallInfo
             // 
             this.lbl_bestallInfo.AutoSize = true;
-            this.lbl_bestallInfo.Location = new System.Drawing.Point(246, 237);
+            this.lbl_bestallInfo.Location = new System.Drawing.Point(246, 218);
             this.lbl_bestallInfo.Name = "lbl_bestallInfo";
             this.lbl_bestallInfo.Size = new System.Drawing.Size(130, 13);
             this.lbl_bestallInfo.TabIndex = 11;
@@ -111,7 +111,7 @@ namespace johns_projekt
             // 
             // nud_antal
             // 
-            this.nud_antal.Location = new System.Drawing.Point(328, 118);
+            this.nud_antal.Location = new System.Drawing.Point(328, 99);
             this.nud_antal.Name = "nud_antal";
             this.nud_antal.Size = new System.Drawing.Size(100, 20);
             this.nud_antal.TabIndex = 13;
@@ -120,7 +120,7 @@ namespace johns_projekt
             // 
             this.lbl_valtSpel.AutoSize = true;
             this.lbl_valtSpel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_valtSpel.Location = new System.Drawing.Point(14, 34);
+            this.lbl_valtSpel.Location = new System.Drawing.Point(14, 15);
             this.lbl_valtSpel.Name = "lbl_valtSpel";
             this.lbl_valtSpel.Size = new System.Drawing.Size(79, 20);
             this.lbl_valtSpel.TabIndex = 14;
@@ -129,7 +129,7 @@ namespace johns_projekt
             // lbl_antal
             // 
             this.lbl_antal.AutoSize = true;
-            this.lbl_antal.Location = new System.Drawing.Point(291, 120);
+            this.lbl_antal.Location = new System.Drawing.Point(291, 101);
             this.lbl_antal.Name = "lbl_antal";
             this.lbl_antal.Size = new System.Drawing.Size(31, 13);
             this.lbl_antal.TabIndex = 15;
@@ -138,7 +138,7 @@ namespace johns_projekt
             // lbl_info
             // 
             this.lbl_info.AutoSize = true;
-            this.lbl_info.Location = new System.Drawing.Point(18, 66);
+            this.lbl_info.Location = new System.Drawing.Point(18, 47);
             this.lbl_info.Name = "lbl_info";
             this.lbl_info.Size = new System.Drawing.Size(294, 26);
             this.lbl_info.TabIndex = 16;
@@ -149,7 +149,7 @@ namespace johns_projekt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(456, 314);
+            this.ClientSize = new System.Drawing.Size(456, 297);
             this.Controls.Add(this.lbl_info);
             this.Controls.Add(this.lbl_antal);
             this.Controls.Add(this.lbl_valtSpel);

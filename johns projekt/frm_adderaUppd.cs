@@ -11,6 +11,7 @@ using System.Windows.Forms;
 
 namespace johns_projekt
 {
+
     public partial class frm_adderaUppd : Form
     {
         Spel updSpel = new Spel();
@@ -32,7 +33,7 @@ namespace johns_projekt
 
         public void hamtaSpel(Spel valtSpel, int nedladdningar, int enheter)
         {
-
+            //Spelet hämtas från grundfönstret och all information sparas
             tbx_titel.Text = valtSpel.Titel;
             tbx_genre.Text = valtSpel.Genre;
             tbx_aldersgrans.Text = valtSpel.Aldersgrans.ToString();
@@ -73,62 +74,77 @@ namespace johns_projekt
             int pris = int.Parse(tbx_pris.Text);
             int nedladdningar = 0;
             int enheter = 0;
-
-            if (btn_adderaUpd.Text == "Uppdatera spelet")
+            bool tom = false;
+            TextBox[] boxes = { tbx_titel, tbx_genre, tbx_aldersgrans, tbx_plattform, tbx_utgivning, tbx_pris };
+            foreach(TextBox box in boxes)
             {
-                id = updSpel.Id;
-                nedladdningar = updNedladd;
-                enheter = updEnheter;
-
-                //Hämtar koppling till databasen
-                string connectionString =
-    "SERVER=localhost;DATABASE=spelbutik;UID=lennart;PASSWORD=abcdef";
-                MySqlConnection conn = new MySqlConnection(connectionString);
-                conn.Open();
-
-                //Uppdaterar spelet med alla värdena i textboxarna
-                string sqlsats = $"UPDATE spel SET ProduktNamn = '{titel}', ProduktGenre = '{genre}', Aldersgrans = {aldersgrans}" +
-                    $", Plattform = '{plattform}', EnhetPris = {pris}, UtgivningsAr = {utgivning}, EnheterILager = {enheter}, Nedladdningar = {nedladdningar}" +
-                    $" WHERE ProduktID = {id}";
-                MySqlCommand cmd = new MySqlCommand(sqlsats, conn);
-                MySqlDataReader dataReader = cmd.ExecuteReader();
-                conn.Close();
-                lbl_lagtTill.Text = "Spelet har uppdaterats!";
-
-
-            }
-            else if(btn_adderaUpd.Text == "Lägg till nytt spel")
-            {
-                id = MinaNyaSpel.Count + 1;
-
-                if (rb_digSpel.Checked)
+                if(box.Text == "")
                 {
-                    nedladdningar = int.Parse(tbx_digFys.Text);
-                    nyttSpel = new DigitaltSpel(id, titel, genre, aldersgrans, plattform, pris, utgivning, nedladdningar);
+                    tom = true;
+                    break;
+                }
+            }
+            if (!tom)
+            {
+                //Uppdaterar spelet
+                if (btn_adderaUpd.Text == "Uppdatera spelet")
+                {
+                    id = updSpel.Id;
+                    nedladdningar = updNedladd;
+                    enheter = updEnheter;
+
+                    //Hämtar koppling till databasen
+                    string connectionString =
+        "SERVER=localhost;DATABASE=spelbutik;UID=lennart;PASSWORD=abcdef";
+                    MySqlConnection conn = new MySqlConnection(connectionString);
+                    conn.Open();
+
+                    //Uppdaterar spelet med alla värdena i textboxarna
+                    string sqlsats = $"UPDATE spel SET ProduktNamn = '{titel}', ProduktGenre = '{genre}', Aldersgrans = {aldersgrans}" +
+                        $", Plattform = '{plattform}', EnhetPris = {pris}, UtgivningsAr = {utgivning}, EnheterILager = {enheter}, Nedladdningar = {nedladdningar}" +
+                        $" WHERE ProduktID = {id}";
+                    MySqlCommand cmd = new MySqlCommand(sqlsats, conn);
+                    MySqlDataReader dataReader = cmd.ExecuteReader();
+                    conn.Close();
+                    lbl_lagtTill.Text = "Spelet har uppdaterats!";
+
 
                 }
-                else if (rb_fysSpel.Checked)
+                //Lägger till ett nytt spel
+                else if (btn_adderaUpd.Text == "Lägg till nytt spel")
                 {
-                    enheter = int.Parse(tbx_digFys.Text);
-                    nyttSpel = new FysisktSpel(id, titel, genre, aldersgrans, plattform, pris, utgivning, enheter);
+                    id = MinaNyaSpel.Count + 1;
+
+                    if (rb_digSpel.Checked)
+                    {
+                        nedladdningar = int.Parse(tbx_digFys.Text);
+                        nyttSpel = new DigitaltSpel(id, titel, genre, aldersgrans, plattform, pris, utgivning, nedladdningar);
+
+                    }
+                    else if (rb_fysSpel.Checked)
+                    {
+                        enheter = int.Parse(tbx_digFys.Text);
+                        nyttSpel = new FysisktSpel(id, titel, genre, aldersgrans, plattform, pris, utgivning, enheter);
+                    }
+
+                    //Hämtar koppling till databasen
+                    string connectionString =
+        "SERVER=localhost;DATABASE=spelbutik;UID=lennart;PASSWORD=abcdef";
+                    MySqlConnection conn = new MySqlConnection(connectionString);
+                    conn.Open();
+
+                    //Skickar det nya spelet till databasen
+                    string sqlsats = $"INSERT INTO spel(ProduktID, ProduktNamn, ProduktGenre, Aldersgrans, Plattform, " +
+                        $"EnhetPris, UtgivningsAr, EnheterILager, Nedladdningar) VALUES ({id}, '{titel}', '{genre}', {aldersgrans}, " +
+                        $"'{plattform}', {pris}, {utgivning}, {enheter}, {nedladdningar})";
+                    MySqlCommand cmd = new MySqlCommand(sqlsats, conn);
+                    MySqlDataReader dataReader = cmd.ExecuteReader();
+                    conn.Close();
+                    lbl_lagtTill.Text = "Spelet har lagts till!";
                 }
-
-                //Hämtar koppling till databasen
-                string connectionString =
-    "SERVER=localhost;DATABASE=spelbutik;UID=lennart;PASSWORD=abcdef";
-                MySqlConnection conn = new MySqlConnection(connectionString);
-                conn.Open();
-
-                //Skickar det nya spelet till databasen
-                string sqlsats = $"INSERT INTO spel(ProduktID, ProduktNamn, ProduktGenre, Aldersgrans, Plattform, " +
-                    $"EnhetPris, UtgivningsAr, EnheterILager, Nedladdningar) VALUES ({id}, '{titel}', '{genre}', {aldersgrans}, " +
-                    $"'{plattform}', {pris}, {utgivning}, {enheter}, {nedladdningar})";
-                MySqlCommand cmd = new MySqlCommand(sqlsats, conn);
-                MySqlDataReader dataReader = cmd.ExecuteReader();
-                conn.Close();
-                lbl_lagtTill.Text = "Spelet har lagts till!";
+                lbl_lagtTill.Visible = true;
             }
-            lbl_lagtTill.Visible = true;
+
         }
 
         private void rb_fysSpel_CheckedChanged(object sender, EventArgs e)
@@ -143,6 +159,7 @@ namespace johns_projekt
 
         private void btn_ok_Click(object sender, EventArgs e)
         {
+            //Skickar tillbaka det nya spelet till grundfönstret
             var newForm = new Form1();
             newForm.hamtaNyttSpel(nyttSpel);
             this.DialogResult = DialogResult.OK;
@@ -153,6 +170,11 @@ namespace johns_projekt
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+
+        private void frm_adderaUppd_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

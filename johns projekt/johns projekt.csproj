@@ -149,6 +149,7 @@
     </Compile>
     <Compile Include="FysisktSpel.cs" />
     <Compile Include="Konto.cs" />
+    <Compile Include="LogInRepetitionException.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

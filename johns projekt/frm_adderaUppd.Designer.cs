@@ -264,6 +264,7 @@ namespace johns_projekt
             this.Controls.Add(this.tbx_titel);
             this.Name = "frm_adderaUppd";
             this.Text = "frm_adderaUppd";
+            this.Load += new System.EventHandler(this.frm_adderaUppd_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

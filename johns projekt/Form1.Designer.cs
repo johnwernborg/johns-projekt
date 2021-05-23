@@ -399,6 +399,7 @@ namespace johns_projekt
             this.Controls.Add(this.btn_hamtaSpel);
             this.Name = "Form1";
             this.Text = ".";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_spel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spelBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fysisktSpelBindingSource)).EndInit();

@@ -13,23 +13,24 @@ namespace johns_projekt
 {
     public partial class frm_skapaKonto : Form
     {
+        Konto kontroll = new Konto();
         public frm_skapaKonto()
         {
             InitializeComponent();
-            tbx_fornamn.Text = "John";
-            tbx_efternamn.Text = "Wernborg";
-            tbx_epost.Text = "john.wernborg@yahoo.se";
-            tbx_losenord.Text = "jllya_W0123";
         }
 
         private void btn_skapaKonto_Click(object sender, EventArgs e)
         {
+            lbl_kontoInfo.Visible = true;
+
             string fornamn = tbx_fornamn.Text;
             string efternamn = tbx_efternamn.Text;
             string epost = tbx_epost.Text;
             string losenord = tbx_losenord.Text;
             string roll = "";
             bool unik = true;
+            bool tom = false;
+            //Kollar så att alla uppgifter är korrekt ifyllda
             if (rb_kund.Checked)
             {
                 roll = "Kund";
@@ -38,40 +39,57 @@ namespace johns_projekt
             {
                 roll = "Personal";
             }
+            string[] boxes = { fornamn, efternamn, epost, losenord, roll };
+            foreach(string b in boxes)
+            {
+                if(b == "")
+                {
+                    tom = true;
+                    break;
+                }
+            }
 
             //Hämtar koppling till databasen
-            string connectionString =
+            if(!tom && kontroll.KontrollEpost(epost))
+            {
+                string connectionString =
 "SERVER=localhost;DATABASE=spelbutik;UID=lennart;PASSWORD=abcdef";
-            MySqlConnection conn = new MySqlConnection(connectionString);
-            conn.Open();
-
-            //Lägger till en ny kund/personal
-            string sqlsats = $"SELECT * FROM konton WHERE Epost = '{epost}'";
-            MySqlCommand cmd = new MySqlCommand(sqlsats, conn);
-            MySqlDataReader dataReader = cmd.ExecuteReader();
-            while (dataReader.Read())
-            {
-                unik = false;
-            }
-            conn.Close();
-
-            if (unik)
-            {
+                MySqlConnection conn = new MySqlConnection(connectionString);
                 conn.Open();
-                string sqlsats2 = $"INSERT INTO konton(Fornamn, Efternamn, Epost, Losenord, Roll) VALUES('{fornamn}', '{efternamn}', '{epost}', '{losenord}', '{roll}')";
 
-                MySqlCommand cmd2 = new MySqlCommand(sqlsats2, conn);
-                MySqlDataReader dataReader2 = cmd2.ExecuteReader();
+                //Kollar att kontot är unikt
+                string sqlsats = $"SELECT * FROM konton WHERE Epost = '{epost}'";
+                MySqlCommand cmd = new MySqlCommand(sqlsats, conn);
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    unik = false;
+                }
+                conn.Close();
+
+                //Gör ett ett nytt konto
+                if (unik)
+                {
+                    conn.Open();
+                    string sqlsats2 = $"INSERT INTO konton(Fornamn, Efternamn, Epost, Losenord, Roll) VALUES('{fornamn}', '{efternamn}', '{epost}', '{losenord}', '{roll}')";
+
+                    MySqlCommand cmd2 = new MySqlCommand(sqlsats2, conn);
+                    MySqlDataReader dataReader2 = cmd2.ExecuteReader();
 
 
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                else
+                {
+                    lbl_kontoInfo.Text = "Eposten är redan registrerad. Försök igen";
+                }
             }
             else
             {
-                lbl_kontoInfo.Visible = true;
-                lbl_kontoInfo.Text = "Eposten är redan registrerad. Försök igen";
+                lbl_kontoInfo.Text = "Alla uppgifter måste vara korrekt ifyllda.";
             }
+
 
         }
 

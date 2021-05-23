@@ -11,8 +11,14 @@ using System.Windows.Forms;
 
 namespace johns_projekt
 {
+    interface IControlTextbox
+    {
+        bool KontrollAddress(string address);
+        bool KontrollEpost(string epost);
+    }
     public partial class Form1 : Form
     {
+
         List<Spel> MinaSpel = new List<Spel>();
         List<Spel> EttSpel = new List<Spel>();
         Konto inloggad = new Konto();
@@ -27,6 +33,7 @@ namespace johns_projekt
 
         public void LoggaIn(Konto inlogg)
         {
+            //Visar olika knappar beroende på om man loggar in som kund eller personal
             inloggad = inlogg;
             lbl_kontoNamn.Text = $"{inloggad.Fornamn} ({inloggad.Roll})";
             Button[] knappar = { btn_radera, btn_uppdatera};
@@ -229,6 +236,7 @@ namespace johns_projekt
 
         private void dgv_spel_CurrentCellChanged(object sender, EventArgs e)
         {
+            //Byter text på knappen för att hämta spel beroende på om det är fys eller dig spel
             if(dgv_spel.DataSource != null && dgv_spel.CurrentRow != null)
             {
                 Spel aktuelltSpel = (Spel)dgv_spel.CurrentRow.DataBoundItem;
@@ -246,6 +254,7 @@ namespace johns_projekt
 
         private void btn_sok_Click(object sender, EventArgs e)
         {
+            //Söker efter det spel som har samma titel som användaren skrivit in i sökrutan
             EttSpel.Clear();
             string soktSpel = tbx_sok.Text;
             bool hittat = false;
@@ -334,15 +343,21 @@ namespace johns_projekt
                 else if(dig)
                 {
                     DigitaltSpel sp = new DigitaltSpel(int.Parse(kolumner[0]), kolumner[1], kolumner[2], int.Parse(kolumner[3]),
-                                kolumner[4], int.Parse(kolumner[5]), int.Parse(kolumner[6]), int.Parse(kolumner[8]));
+                                kolumner[4], int.Parse(kolumner[5]), int.Parse(kolumner[6]), int.Parse(kolumner[7]));
                     MinaSpel.Add(sp);
                 }
+
             }
         }
 
         private void btn_loggaUt_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

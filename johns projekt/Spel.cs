@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace johns_projekt
 {
     public class Spel : IComparable<Spel>
-    {
+    { 
+
         string nyRad = Environment.NewLine;
 
         int id;
