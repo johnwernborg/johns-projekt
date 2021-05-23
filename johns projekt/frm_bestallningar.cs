@@ -90,5 +90,15 @@ namespace johns_projekt
                 aktuellOrder = (Order)dgv_orders.CurrentRow.DataBoundItem;
             }
         }
+
+        private void btn_ok_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btn_avbryt_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

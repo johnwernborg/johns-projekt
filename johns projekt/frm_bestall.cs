@@ -92,7 +92,7 @@ namespace johns_projekt
 
                 //Skickar faktura till fakturor
                 conn.Open();
-                sqlsats = $"INSERT INTO fakturor(KundID, Pris, Datum) VALUES ({kundId}, {orderPris}, '{betalDatum}')";
+                sqlsats = $"INSERT INTO fakturor(ProduktID, KundID, Pris, Datum) VALUES ({produktId}, {kundId}, {orderPris}, '{betalDatum}')";
                 MySqlCommand cmd2 = new MySqlCommand(sqlsats, conn);
                 MySqlDataReader dataReader2 = cmd2.ExecuteReader();
                 conn.Close();

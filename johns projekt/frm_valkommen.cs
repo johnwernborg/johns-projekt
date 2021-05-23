@@ -47,5 +47,10 @@ namespace johns_projekt
         {
 
         }
+
+        private void btn_avsluta_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

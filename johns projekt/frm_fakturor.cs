@@ -53,7 +53,8 @@ namespace johns_projekt
                         kolumner.Add("NULL");
                     }
                 }
-                Faktura fak = new Faktura(int.Parse(kolumner[0]), int.Parse(kolumner[1]), int.Parse(kolumner[2]), DateTime.Parse(kolumner[3]));
+                Faktura fak = new Faktura(int.Parse(kolumner[0]), int.Parse(kolumner[1]), int.Parse(kolumner[2]), 
+                    int.Parse(kolumner[3]), DateTime.Parse(kolumner[4]));
                 fakturor.Add(fak);
             }
         }
@@ -86,6 +87,16 @@ namespace johns_projekt
             {
                 aktuellFaktura = (Faktura)dgv_fakturor.CurrentRow.DataBoundItem;
             }
+        }
+
+        private void btn_ok_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btn_avbryt_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -31,11 +31,11 @@ namespace johns_projekt
         {
             this.components = new System.ComponentModel.Container();
             this.dgv_orders = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_ok = new System.Windows.Forms.Button();
             this.btn_avbryt = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.lbl_bestallKlar = new System.Windows.Forms.Label();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.prisDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.datumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,6 +60,13 @@ namespace johns_projekt
             this.dgv_orders.TabIndex = 0;
             this.dgv_orders.CurrentCellChanged += new System.EventHandler(this.dgv_orders_CurrentCellChanged);
             // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "ID";
+            this.Id.Name = "Id";
+            this.Id.Width = 35;
+            // 
             // btn_ok
             // 
             this.btn_ok.Location = new System.Drawing.Point(301, 196);
@@ -68,6 +75,7 @@ namespace johns_projekt
             this.btn_ok.TabIndex = 12;
             this.btn_ok.Text = "OK";
             this.btn_ok.UseVisualStyleBackColor = true;
+            this.btn_ok.Click += new System.EventHandler(this.btn_ok_Click);
             // 
             // btn_avbryt
             // 
@@ -77,6 +85,7 @@ namespace johns_projekt
             this.btn_avbryt.TabIndex = 11;
             this.btn_avbryt.Text = "Avbryt";
             this.btn_avbryt.UseVisualStyleBackColor = true;
+            this.btn_avbryt.Click += new System.EventHandler(this.btn_avbryt_Click);
             // 
             // button1
             // 
@@ -97,13 +106,6 @@ namespace johns_projekt
             this.lbl_bestallKlar.TabIndex = 14;
             this.lbl_bestallKlar.Text = "Beställningen är nu skickad!";
             this.lbl_bestallKlar.Visible = false;
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "ID";
-            this.Id.Name = "Id";
-            this.Id.Width = 35;
             // 
             // addressDataGridViewTextBoxColumn
             // 

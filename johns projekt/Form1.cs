@@ -175,7 +175,8 @@ namespace johns_projekt
             }
             else if(btn_laggTill.Text == "Se mina fakturor")
             {
-
+                var newForm = new frm_fakturor();
+                newForm.Show();
             }
 
         }
@@ -337,6 +338,11 @@ namespace johns_projekt
                     MinaSpel.Add(sp);
                 }
             }
+        }
+
+        private void btn_loggaUt_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

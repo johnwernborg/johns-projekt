@@ -61,11 +61,10 @@ namespace johns_projekt
             string connectionString =
     "SERVER=localhost;DATABASE=spelbutik;UID=lennart;PASSWORD=abcdef";
             MySqlConnection conn = new MySqlConnection(connectionString);
-            conn.Open();
 
             //Skickar faktura till fakturor
             conn.Open();
-            string sqlsats = $"INSERT INTO fakturor(KundID, Pris, Datum) VALUES ({kundId}, {produktPris}, '{betalDatum}')";
+            string sqlsats = $"INSERT INTO fakturor(ProduktID, KundID, Pris, Datum) VALUES ({produktId}, {kundId}, {produktPris}, '{betalDatum}')";
             MySqlCommand cmd = new MySqlCommand(sqlsats, conn);
             MySqlDataReader dataReader = cmd.ExecuteReader();
             conn.Close();
@@ -88,6 +87,11 @@ namespace johns_projekt
         }
 
         private void btn_ok_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btn_avbryt_Click(object sender, EventArgs e)
         {
             this.Close();
         }

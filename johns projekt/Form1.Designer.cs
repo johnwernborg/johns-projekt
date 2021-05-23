@@ -52,6 +52,7 @@ namespace johns_projekt
             this.btn_laggTill = new System.Windows.Forms.Button();
             this.lbl_ejHitta = new System.Windows.Forms.Label();
             this.lbl_kontoNamn = new System.Windows.Forms.Label();
+            this.btn_loggaUt = new System.Windows.Forms.Button();
             this.genreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.titelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.prisDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -302,6 +303,16 @@ namespace johns_projekt
             this.lbl_kontoNamn.TabIndex = 27;
             this.lbl_kontoNamn.Text = "Namn (roll)";
             // 
+            // btn_loggaUt
+            // 
+            this.btn_loggaUt.Location = new System.Drawing.Point(370, 46);
+            this.btn_loggaUt.Name = "btn_loggaUt";
+            this.btn_loggaUt.Size = new System.Drawing.Size(59, 23);
+            this.btn_loggaUt.TabIndex = 28;
+            this.btn_loggaUt.Text = "Logga ut";
+            this.btn_loggaUt.UseVisualStyleBackColor = true;
+            this.btn_loggaUt.Click += new System.EventHandler(this.btn_loggaUt_Click);
+            // 
             // genreDataGridViewTextBoxColumn
             // 
             this.genreDataGridViewTextBoxColumn.DataPropertyName = "Genre";
@@ -363,6 +374,7 @@ namespace johns_projekt
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(490, 462);
+            this.Controls.Add(this.btn_loggaUt);
             this.Controls.Add(this.lbl_kontoNamn);
             this.Controls.Add(this.lbl_ejHitta);
             this.Controls.Add(this.btn_laggTill);
@@ -426,6 +438,7 @@ namespace johns_projekt
         private System.Windows.Forms.Label lbl_ejHitta;
         private System.Windows.Forms.Label lbl_kontoNamn;
         internal System.Windows.Forms.DataGridView dgv_spel;
+        private System.Windows.Forms.Button btn_loggaUt;
     }
 }
 

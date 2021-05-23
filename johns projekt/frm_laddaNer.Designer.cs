@@ -76,6 +76,7 @@ namespace johns_projekt
             this.btn_avbryt.TabIndex = 17;
             this.btn_avbryt.Text = "Avbryt";
             this.btn_avbryt.UseVisualStyleBackColor = true;
+            this.btn_avbryt.Click += new System.EventHandler(this.btn_avbryt_Click);
             // 
             // lbl_laddatNer
             // 

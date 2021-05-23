@@ -31,14 +31,14 @@ namespace johns_projekt
         {
             this.components = new System.ComponentModel.Container();
             this.dgv_fakturor = new System.Windows.Forms.DataGridView();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prisDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.datumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fakturaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btn_ok = new System.Windows.Forms.Button();
             this.btn_avbryt = new System.Windows.Forms.Button();
             this.btn_betala = new System.Windows.Forms.Button();
             this.lbl_bestallKlar = new System.Windows.Forms.Label();
-            this.fakturaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prisDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.datumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_fakturor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fakturaBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -58,6 +58,29 @@ namespace johns_projekt
             this.dgv_fakturor.TabIndex = 1;
             this.dgv_fakturor.CurrentCellChanged += new System.EventHandler(this.dgv_fakturor_CurrentCellChanged);
             // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.Width = 35;
+            // 
+            // prisDataGridViewTextBoxColumn
+            // 
+            this.prisDataGridViewTextBoxColumn.DataPropertyName = "Pris";
+            this.prisDataGridViewTextBoxColumn.HeaderText = "Pris";
+            this.prisDataGridViewTextBoxColumn.Name = "prisDataGridViewTextBoxColumn";
+            // 
+            // datumDataGridViewTextBoxColumn
+            // 
+            this.datumDataGridViewTextBoxColumn.DataPropertyName = "Datum";
+            this.datumDataGridViewTextBoxColumn.HeaderText = "Datum";
+            this.datumDataGridViewTextBoxColumn.Name = "datumDataGridViewTextBoxColumn";
+            // 
+            // fakturaBindingSource
+            // 
+            this.fakturaBindingSource.DataSource = typeof(johns_projekt.Faktura);
+            // 
             // btn_ok
             // 
             this.btn_ok.Location = new System.Drawing.Point(282, 196);
@@ -66,6 +89,7 @@ namespace johns_projekt
             this.btn_ok.TabIndex = 14;
             this.btn_ok.Text = "OK";
             this.btn_ok.UseVisualStyleBackColor = true;
+            this.btn_ok.Click += new System.EventHandler(this.btn_ok_Click);
             // 
             // btn_avbryt
             // 
@@ -75,6 +99,7 @@ namespace johns_projekt
             this.btn_avbryt.TabIndex = 13;
             this.btn_avbryt.Text = "Avbryt";
             this.btn_avbryt.UseVisualStyleBackColor = true;
+            this.btn_avbryt.Click += new System.EventHandler(this.btn_avbryt_Click);
             // 
             // btn_betala
             // 
@@ -95,29 +120,6 @@ namespace johns_projekt
             this.lbl_bestallKlar.TabIndex = 16;
             this.lbl_bestallKlar.Text = "Fakturan är nu betald!";
             this.lbl_bestallKlar.Visible = false;
-            // 
-            // fakturaBindingSource
-            // 
-            this.fakturaBindingSource.DataSource = typeof(johns_projekt.Faktura);
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.Width = 35;
-            // 
-            // prisDataGridViewTextBoxColumn
-            // 
-            this.prisDataGridViewTextBoxColumn.DataPropertyName = "Pris";
-            this.prisDataGridViewTextBoxColumn.HeaderText = "Pris";
-            this.prisDataGridViewTextBoxColumn.Name = "prisDataGridViewTextBoxColumn";
-            // 
-            // datumDataGridViewTextBoxColumn
-            // 
-            this.datumDataGridViewTextBoxColumn.DataPropertyName = "Datum";
-            this.datumDataGridViewTextBoxColumn.HeaderText = "Datum";
-            this.datumDataGridViewTextBoxColumn.Name = "datumDataGridViewTextBoxColumn";
             // 
             // frm_fakturor
             // 

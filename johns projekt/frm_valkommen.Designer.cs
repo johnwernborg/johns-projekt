@@ -36,6 +36,7 @@ namespace johns_projekt
             this.lbl_info = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.btn_avsluta = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lbl_valkommen
@@ -110,11 +111,22 @@ namespace johns_projekt
             this.label2.TabIndex = 15;
             this.label2.Text = "Har du redan ett konto? Logga in! ";
             // 
+            // btn_avsluta
+            // 
+            this.btn_avsluta.Location = new System.Drawing.Point(393, 198);
+            this.btn_avsluta.Name = "btn_avsluta";
+            this.btn_avsluta.Size = new System.Drawing.Size(75, 23);
+            this.btn_avsluta.TabIndex = 16;
+            this.btn_avsluta.Text = "Avsluta";
+            this.btn_avsluta.UseVisualStyleBackColor = true;
+            this.btn_avsluta.Click += new System.EventHandler(this.btn_avsluta_Click);
+            // 
             // frm_valkommen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(480, 217);
+            this.ClientSize = new System.Drawing.Size(480, 233);
+            this.Controls.Add(this.btn_avsluta);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lbl_info);
@@ -139,5 +151,6 @@ namespace johns_projekt
         private System.Windows.Forms.Label lbl_info;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btn_avsluta;
     }
 }
