@@ -37,6 +37,7 @@ namespace johns_projekt
             this.lbl_skapaKonto = new System.Windows.Forms.Label();
             this.btn_avbryt = new System.Windows.Forms.Button();
             this.lbl_inloggFel = new System.Windows.Forms.Label();
+            this.btn_visa = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tbx_losenord
@@ -112,11 +113,22 @@ namespace johns_projekt
             this.lbl_inloggFel.Text = "Inloggningen var felaktig. Försök igen";
             this.lbl_inloggFel.Visible = false;
             // 
+            // btn_visa
+            // 
+            this.btn_visa.Location = new System.Drawing.Point(160, 101);
+            this.btn_visa.Name = "btn_visa";
+            this.btn_visa.Size = new System.Drawing.Size(41, 20);
+            this.btn_visa.TabIndex = 23;
+            this.btn_visa.Text = "Visa";
+            this.btn_visa.UseVisualStyleBackColor = true;
+            this.btn_visa.Click += new System.EventHandler(this.btn_visa_Click);
+            // 
             // frm_inlogg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(252, 178);
+            this.Controls.Add(this.btn_visa);
             this.Controls.Add(this.lbl_inloggFel);
             this.Controls.Add(this.btn_avbryt);
             this.Controls.Add(this.lbl_skapaKonto);
@@ -141,5 +153,6 @@ namespace johns_projekt
         private System.Windows.Forms.Label lbl_skapaKonto;
         private System.Windows.Forms.Button btn_avbryt;
         private System.Windows.Forms.Label lbl_inloggFel;
+        private System.Windows.Forms.Button btn_visa;
     }
 }

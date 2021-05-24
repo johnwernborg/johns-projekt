@@ -97,5 +97,19 @@ namespace johns_projekt
         {
             this.Close();
         }
+
+        private void btn_visa_Click(object sender, EventArgs e)
+        {
+            if (btn_visa.Text == "Visa")
+            {
+                tbx_losenord.PasswordChar = '\0';
+                btn_visa.Text = "Dölj";
+            }
+            else if (btn_visa.Text == "Dölj")
+            {
+                tbx_losenord.PasswordChar = '*';
+                btn_visa.Text = "Visa";
+            }
+        }
     }
 }

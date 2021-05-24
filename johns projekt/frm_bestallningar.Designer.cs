@@ -56,7 +56,7 @@ namespace johns_projekt
             this.dgv_orders.DataSource = this.orderBindingSource;
             this.dgv_orders.Location = new System.Drawing.Point(12, 12);
             this.dgv_orders.Name = "dgv_orders";
-            this.dgv_orders.Size = new System.Drawing.Size(286, 150);
+            this.dgv_orders.Size = new System.Drawing.Size(291, 150);
             this.dgv_orders.TabIndex = 0;
             this.dgv_orders.CurrentCellChanged += new System.EventHandler(this.dgv_orders_CurrentCellChanged);
             // 

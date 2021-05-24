@@ -144,22 +144,32 @@ namespace johns_projekt
 
         private void btn_radera_Click(object sender, EventArgs e)
         {
-            //Hämtar koppling till databasen
-            string connectionString =
-"SERVER=localhost;DATABASE=spelbutik;UID=lennart;PASSWORD=abcdef";
-            MySqlConnection conn = new MySqlConnection(connectionString);
-            conn.Open();
-
             Spel aktuelltSpel = (Spel)dgv_spel.CurrentRow.DataBoundItem;
 
-            //Raderar aktuellt spel
-            string sqlsats = $"DELETE FROM spel WHERE ProduktID = {aktuelltSpel.Id}";
-            MySqlCommand cmd = new MySqlCommand(sqlsats, conn);
-            MySqlDataReader dataReader = cmd.ExecuteReader();
-            MinaSpel.Remove(aktuelltSpel);
-            conn.Close();
-            dgv_spel.DataSource = null;
-            dgv_spel.DataSource = MinaSpel;
+            if (MessageBox.Show($"Vill du verkligen radera {aktuelltSpel.Titel}?", "Radera spel", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                //Hämtar koppling till databasen
+                string connectionString =
+    "SERVER=localhost;DATABASE=spelbutik;UID=lennart;PASSWORD=abcdef";
+                MySqlConnection conn = new MySqlConnection(connectionString);
+                conn.Open();
+
+
+
+                //Raderar aktuellt spel
+                string sqlsats = $"DELETE FROM spel WHERE ProduktID = {aktuelltSpel.Id}";
+                MySqlCommand cmd = new MySqlCommand(sqlsats, conn);
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+                MinaSpel.Remove(aktuelltSpel);
+                conn.Close();
+                dgv_spel.DataSource = null;
+                dgv_spel.DataSource = MinaSpel;
+            }
+            else
+            {
+                
+            }
+
         }
 
         private void btn_laggTill_Click(object sender, EventArgs e)

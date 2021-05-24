@@ -65,15 +65,32 @@ namespace johns_projekt
 
         private void btn_laggTill_Click(object sender, EventArgs e)
         {
+            bool[] siffror = new bool[5];
             int id = 0;
             string titel = tbx_titel.Text;
             string genre = tbx_genre.Text;
-            int aldersgrans = int.Parse(tbx_aldersgrans.Text);
             string plattform = tbx_plattform.Text;
-            int utgivning = int.Parse(tbx_utgivning.Text);
-            int pris = int.Parse(tbx_pris.Text);
+
+            string aldersgransText = tbx_aldersgrans.Text;
+            int aldersgrans;
+            siffror[0] = Int32.TryParse(aldersgransText, out aldersgrans);
+
+            string utgivningText = tbx_utgivning.Text;
+            int utgivning;
+            siffror[1] = Int32.TryParse(utgivningText, out utgivning);
+
+            string prisText = tbx_pris.Text;
+            int pris;
+            siffror[2] = Int32.TryParse(prisText, out pris);
+
+            string nedladdningarText = tbx_digFys.Text;
             int nedladdningar = 0;
+            siffror[3] = Int32.TryParse(nedladdningarText, out nedladdningar);
+
+            string enheterText = tbx_digFys.Text;
             int enheter = 0;
+            siffror[4] = Int32.TryParse(enheterText, out enheter);
+
             bool tom = false;
             TextBox[] boxes = { tbx_titel, tbx_genre, tbx_aldersgrans, tbx_plattform, tbx_utgivning, tbx_pris };
             foreach(TextBox box in boxes)
@@ -84,7 +101,7 @@ namespace johns_projekt
                     break;
                 }
             }
-            if (!tom)
+            if (!tom && !siffror.Contains(false))
             {
                 //Uppdaterar spelet
                 if (btn_adderaUpd.Text == "Uppdatera spelet")
@@ -117,13 +134,11 @@ namespace johns_projekt
 
                     if (rb_digSpel.Checked)
                     {
-                        nedladdningar = int.Parse(tbx_digFys.Text);
                         nyttSpel = new DigitaltSpel(id, titel, genre, aldersgrans, plattform, pris, utgivning, nedladdningar);
 
                     }
                     else if (rb_fysSpel.Checked)
                     {
-                        enheter = int.Parse(tbx_digFys.Text);
                         nyttSpel = new FysisktSpel(id, titel, genre, aldersgrans, plattform, pris, utgivning, enheter);
                     }
 

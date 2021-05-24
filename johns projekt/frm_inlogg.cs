@@ -64,12 +64,13 @@ namespace johns_projekt
                 {
                     lbl_inloggFel.Visible = true;
                     forsok++;
-
-                    if (forsok > 5)
+                    try
                     {
-                        //Om användaren misslyckas med att logga in 5 ggr misstänks den för att
-                        //hacka sig in på någon annans konto. För att hindra detta kastas exception
-                        throw new LogInRepetitionException();
+                        tryLogin(forsok);
+                    }
+                    catch (Exception error)
+                    {
+                        MessageBox.Show("It seems like you're trying to hack into someones account.");
                     }
                 }
                 else
@@ -92,15 +93,37 @@ namespace johns_projekt
             {
                 lbl_inloggFel.Visible = true;
                 lbl_inloggFel.Text = "Alla uppgifter måste vara ifyllda. Försök igen.";
-
             }
+        }
 
-
+        private void tryLogin(int f)
+        {
+            if (f > 5)
+            {
+                //Om användaren misslyckas med att logga in 5 ggr misstänks den för att
+                //hacka sig in på någon annans konto. För att hindra detta kastas exception
+                throw new LogInRepetitionException();
+            }
         }
 
         private void btn_avbryt_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btn_visa_Click(object sender, EventArgs e)
+        {
+            if(btn_visa.Text == "Visa")
+            {
+                tbx_losenord.PasswordChar = '\0';
+                btn_visa.Text = "Dölj";
+            }
+            else if(btn_visa.Text == "Dölj")
+            {
+                tbx_losenord.PasswordChar = '*';
+                btn_visa.Text = "Visa";
+            }
+
         }
     }
 }

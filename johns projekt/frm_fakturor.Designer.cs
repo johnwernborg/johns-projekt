@@ -54,7 +54,7 @@ namespace johns_projekt
             this.dgv_fakturor.DataSource = this.fakturaBindingSource;
             this.dgv_fakturor.Location = new System.Drawing.Point(12, 12);
             this.dgv_fakturor.Name = "dgv_fakturor";
-            this.dgv_fakturor.Size = new System.Drawing.Size(277, 150);
+            this.dgv_fakturor.Size = new System.Drawing.Size(280, 150);
             this.dgv_fakturor.TabIndex = 1;
             this.dgv_fakturor.CurrentCellChanged += new System.EventHandler(this.dgv_fakturor_CurrentCellChanged);
             // 
